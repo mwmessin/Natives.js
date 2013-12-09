@@ -1,0 +1,6 @@
+
+Boolean.implement({
+
+	isBoolean: true
+
+});

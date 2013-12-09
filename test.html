@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Natives</title>
+	</head>
+	<body>
+		<div>
+			<form id='A' class='classy'>
+				<label>form A</label>
+				<input value='A' />
+				<input type='password' value='secret' />
+				<input type='submit' value='Submit' />
+			</form>
+			<form id='B'>
+				<label>form B</label>
+				<input value='B' />
+				<input name='stuff' value='textual healing' />
+				<input name='pw' type='password' value='secret' />
+				<select>
+					<option>1</option>
+					<option selected="selected">2</option>
+				</select>
+				<input type='submit' value='Submit' />
+			</form>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>
+
+<script src="Function.js"></script>
+<script src="Object.js"></script>
+<script src="Array.js"></script>
+<script src="String.js"></script>
+<script src="Number.js"></script>
+<script src="Boolean.js"></script>
+<script src="Element.js"></script>
+<script src="Query.js"></script>
+
+<!--
+
+Notes
+- - -
+
+TODO:
+- - -
+templating
+
+'view streams' are windowed views on large data sets such that you can jump to the middle of them without loading the whole thing. requires records to be a consistent dimension though for complete scrolling
+
+network -> data -> template autoupdates aka 'data binding'
+
+dom traversal X
+	children X
+	closest X
+	find X
+
+animation
+	multi-prop transition X
+	transform translate X
+	transform rotate X
+	easing
+
+forms
+	xhr
+	serialization?
+
+object networking
+	post
+	get
+	delete
+	put
+
+dom props
+	class, addClass?, removeClass? X
+	src X
+	title/tooltip X
+
+events
+	delegation X
+	click/mousedown/mouseup X
+	left/right/mid click X
+	touch/multi-touch
+	scroll/mousewheel
+	mouseenter/mouseover/mouseout/mouseleave
+	keydown/keyup/keypress individual key X
+	mousemove X
+
+-->
+
+<script>
+	$('form#A')
+	.border('20px solid red')
+	.center()
+	.contextmenu(false)
+	.mousedown(function (event) {
+		console.log(event.click);
+	});
+
+	window.scroll(function (event) {
+		console.log(event.key);
+	})
+
+	document.html
+	.height("100%")
+
+	document.body
+	.height("200%")
+	.keydown(function (event) {
+		console.log(event.key);
+	})
+	.keydown("*", function (event) {
+		console.log(event.key);
+	});
+</script>
