@@ -1,6 +1,6 @@
 
 function load (key) {
-	return localStorage[key];
+	return localStorage[key].toObject();
 }
 
 Object.implement({
@@ -30,6 +30,7 @@ Object.implement({
 
 	save: function (key) {
 		localStorage[key] = this;
+		return this;
 	},
 
 	extend: function (object) {
