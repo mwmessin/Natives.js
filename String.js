@@ -11,6 +11,16 @@ String.implement({
 		return parseFloat(this, base);
 	},
 
+	toObject: function () {
+		return JSON.parse(this);
+	},
+
+	times: function (count) {
+		var result = '';
+		while (count--) result += this;
+		return result;
+	},
+
 	colorHexToDec: function () {
 		return [
 			this.substring(1,3).toInt(16), 

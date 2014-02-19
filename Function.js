@@ -24,6 +24,14 @@ Function.implement({
 
 	isFunction: true,
 
+	methodize: function (context) {
+		var callback = this;
+
+		return function () {
+			callback.apply(context, [this].add(arguments));
+		}
+	},
+
 	debounce: function (wait) {
 		var callback = this, timeout;
 
@@ -33,7 +41,7 @@ Function.implement({
 			clearTimeout(timeout);
 			timeout = setTimeout(function () {
 				callback.apply(null, args);
-			}, wait);
+			}, wait); 
 		};
 	},
 

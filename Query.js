@@ -55,6 +55,8 @@ Query.implement({
 
 	border: Query.invoker('border'),
 
+	borderRadius: Query.invoker('borderRadius'),
+
 	center: Query.invoker('center'),
 
 	children: function (selector) {
