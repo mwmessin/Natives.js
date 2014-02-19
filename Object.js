@@ -1,7 +1,36 @@
 
+function load (key) {
+	return localStorage[key];
+}
+
 Object.implement({
 
 	isObject: true,
+
+	toString: function () {
+		return JSON.stringify(this);
+	},
+
+	toCSON: function (depth) {
+		var space = '&nbsp;', depth = depth || 1;
+		var pretty = '';
+
+		for (var key in this) {
+			var value = this[key];
+
+			if (! (value == null || value.isNumber || value.isString)) {
+				value = '<br>' + value.toCSON(depth + 1);
+			}
+
+			pretty += space.times(depth * 2) + key + ': ' + value + '<br>';
+		}
+
+		return pretty;
+	},
+
+	save: function (key) {
+		localStorage[key] = this;
+	},
 
 	extend: function (object) {
 		for (var key in object) {
@@ -31,19 +60,17 @@ Object.implement({
 
 	xhr: function (options) {
 		var xhr = new XMLHttpRequest();
+		var url = options.to;
+
+		if (options.params) url += '?' + options.params.delimString('&', '=');
 
 		xhr.addEventListener('load', function () {
-			console.log(xhr.status, xhr.response);
+			console.log(xhr.status, xhr);
+			options.success(xhr.response);
 		}, false);
 
-		xhr.open(options.method, options.to, true);
+		xhr.open(options.method || 'get', url, true);
 		xhr.send();
-	},
-
-	post: function (options) {
-		this.xhr(options.extend({
-			method: 'post'
-		}));
 	},
 
 	// 

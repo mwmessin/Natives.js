@@ -3,6 +3,10 @@ Array.implement({
 
 	isArray: true,
 
+	toString: function () {
+		return JSON.stringify(this);
+	},
+
 	add: function (array) {
 		this.push.apply(this, array);
 		return this;
@@ -11,6 +15,10 @@ Array.implement({
 	index: function (i) {
 		if (this.length) while (i < 0) i += this.length;
 		return this[i];
+	},
+
+	last: function () {
+		return this[this.length - 1];
 	},
 
 	contains: function (object) {

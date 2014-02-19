@@ -210,6 +210,14 @@ Element.implement({
 		return this;
 	},
 
+	append: function (object) {
+		this.appendChild(new Text(object))
+	},
+
+	html: function (markup) {
+		this.innerHTML = markup;
+	},
+
 	erase: function (object) {
 		if (object.isString) {
 			var className = object.extract(/\.([_-\w]+)/);
