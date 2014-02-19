@@ -19,37 +19,23 @@ Number.implement({
 
 	isNumber: true,
 
-	pow: function (exponent) {
-		return Math.pow(this, exponent);
-	},
+	pow: Math.pow.methodize(),
 
 	root: function (value) {
 		return Math.pow(value, 1 / this);
 	},
 
-	abs: function () {
-		return Math.abs(this);
-	},
+	abs: Math.abs.methodize(),
 
-	ceil: function () {
-		return Math.ceil(this);
-	},
+	ceil: Math.ceil.methodize(),
 
-	floor: function () {
-		return Math.floor(this);
-	},
+	floor: Math.floor.methodize(),
 
-	round: function () {
-		return Math.round(this);
-	},
+	round: Math.round.methodize(),
 
-	min: function (min) {
-		return Math.min(this, min);
-	},
+	min: Math.min.methodize(),
 
-	max: function (max) {
-		return Math.max(this, max);
-	},
+	max: Math.max.methodize(),
 
 	clamp: function (min, max) {
 		return Math.max(Math.min(this, max), min);

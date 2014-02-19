@@ -15,6 +15,11 @@ String.implement({
 		return JSON.parse(this);
 	},
 
+	save: function (key) {
+		localStorage[key] = '"' + this + '"';
+		return this;
+	},
+
 	times: function (count) {
 		var result = '';
 		while (count--) result += this;

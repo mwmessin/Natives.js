@@ -28,7 +28,7 @@ Function.implement({
 		var callback = this;
 
 		return function () {
-			callback.apply(context, [this].add(arguments));
+			return callback.apply(context, [this].add(arguments));
 		}
 	},
 
