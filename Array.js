@@ -36,6 +36,31 @@ Array.implement({
 		if (this.contains(object)) return this;
 		this.push(object);
 		return this;
-	}
+	},
 
+	sum: function () {
+		var sum = 0;
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			sum += this[i];
+		}
+
+		return sum;
+	},
+
+	mean: function () {
+		return this.sum() / this.length;
+	},
+
+	stdDev: function () {
+		var devs = 0;
+		var mean = this.mean();
+
+		for (var dev, i = 0, l = this.length; i < l; ++i) {
+			dev = this[i] - mean;
+			devs += dev * dev;
+		}
+
+		return sqrt(devs / this.length);
+	}
 });
