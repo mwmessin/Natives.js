@@ -1,5 +1,6 @@
 
-var sqrt = Math.sqrt,
+var random = Math.random,
+	qrt = Math.sqrt,
 	sin = Math.sin,
 	cos = Math.cos,
 	tan = Math.tan,

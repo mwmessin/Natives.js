@@ -38,6 +38,10 @@ Array.implement({
 		return this;
 	},
 
+	random: function () {
+		return this[random() * this.length | 0];
+	},
+
 	sum: function () {
 		var sum = 0;
 
@@ -63,4 +67,5 @@ Array.implement({
 
 		return sqrt(devs / this.length);
 	}
+	
 });

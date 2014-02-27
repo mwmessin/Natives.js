@@ -33,6 +33,26 @@ Object.implement({
 		return this;
 	},
 
+	keys: function () {
+		var result = [];
+
+		for (var key in this) {
+			result.push(key);
+		}
+
+		return result;
+	},
+
+	only: function () {
+		var result = {};
+
+		for (var i = 0, l = arguments.length; i < l; ++i) {
+			result[arguments[i]] = this[arguments[i]];
+		}
+
+		return result;
+	},
+
 	extend: function (object) {
 		for (var key in object) {
 			this[key] = object[key];
