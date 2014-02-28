@@ -1,20 +1,15 @@
 
 var random = Math.random,
-	qrt = Math.sqrt,
+	sqrt = Math.sqrt,
 	sin = Math.sin,
 	cos = Math.cos,
 	tan = Math.tan,
 	asin = Math.asin,
 	acos = Math.acos,
 	atan = Math.atan,
-	atan2 = Math.atan2;
-
-Number.extend({
-
-	PI: Math.PI,
-	E: Math.E
-
-});
+	atan2 = Math.atan2,
+	pi = Math.PI,
+	e = Math.E;
 
 Number.implement({
 
