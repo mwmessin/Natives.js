@@ -1,5 +1,9 @@
 
 function $(selector) {
+	if (selector.isFunction) return selector.defer();
+
+	var create = selector.extract(/<(.*)>/);
+	if (create) return create.$();
 	return new Query(selector);
 }
 
@@ -52,6 +56,8 @@ Query.implement({
 
 		return this;
 	},
+
+	to: Query.invoker('to'),
 
 	border: Query.invoker('border'),
 

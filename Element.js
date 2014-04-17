@@ -115,7 +115,7 @@ Element.implement({
 	isElement: true,
 
 	$: function () {
-		return $(this);
+		return new Query(this);
 	},
 
 	touchstart: Element.event('touchstart'),
@@ -212,6 +212,10 @@ Element.implement({
 
 	append: function (object) {
 		this.appendChild(new Text(object))
+	},
+
+	to: function (parent) {
+		(parent.isString ? $(parent)[0] : parent).appendChild(this);
 	},
 
 	html: function (markup) {

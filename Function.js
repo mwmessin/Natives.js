@@ -9,14 +9,16 @@ Function.prototype.implement = function (members) {
 	var key, prototype = this.prototype;
 
 	for (key in members) {
-		if (prototype[key] && prototype[key] != members[key]) {
-			console.warn('overwriting "' + key + '" in ' + (this.name || this) + '.prototype');
-		}
+		if (members[key] != prototype[key]) {
+			if (prototype[key]) {
+				console.warn('overwriting "' + key + '" in ' + (this.name || this) + '.prototype');
+			}
 
-		Object.defineProperty(prototype, key, {
-			value: members[key],
-			enumerable: false
-		});
+			Object.defineProperty(prototype, key, {
+				value: members[key],
+				enumerable: false
+			});
+		}
 	}
 };
 

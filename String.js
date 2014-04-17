@@ -3,6 +3,10 @@ String.implement({
 
 	isString: true,
 
+	$: function () {
+		return this.toElement().$();
+	},
+
 	toInt: function (base) {
 		return parseInt(this, base);
 	},
@@ -13,6 +17,10 @@ String.implement({
 
 	toObject: function () {
 		return JSON.parse(this);
+	},
+
+	toElement: function () {
+		return document.createElement(this);
 	},
 
 	save: function (key) {
@@ -73,6 +81,10 @@ String.implement({
 
 	matches: function (regex) {
 		return this.match(regex) != null;
+	},
+
+	stem: function () {
+		console.error('stub');
 	}
 
 });
