@@ -1,9 +1,10 @@
 
 function $(selector) {
 	if (selector.isFunction) return selector.defer();
-
-	var create = selector.extract(/<(.*)>/);
-	if (create) return create.$();
+	if (selector.isString) {
+		var create = selector.extract(/<(.*)>/);
+		if (create) return create.$();
+	}
 	return new Query(selector);
 }
 
@@ -20,10 +21,10 @@ Query.extend({
 
 	invoker: function (key) {
 		return function () {
-			if (arguments.length == 0 && this[0]) return this[0][key]();
+			if (arguments.length == 0 && this[0]) return this[0].prototype[key].apply(this[i], []);
 
 			for (var i = 0, l = this.length; i < l; ++i) {
-				this[i][key].apply(this[i], arguments);
+				this[i].prototype[key].apply(this[i], arguments);
 			}
 
 			return this;
@@ -35,7 +36,7 @@ Query.extend({
 			var transforms = [];
 
 			for (var transform, i = 0, l = this.length; i < l; ++i) {
-				transform = this[i][key].apply(this[i], arguments);
+				transform = this[i][key].prototype[key].apply(this[i], arguments);
 				transform.isQuery ? transforms.add(transform) : transforms.push(transform);
 			}
 
@@ -49,6 +50,42 @@ Query.implement({
 
 	isQuery: true,
 
+	touchstart: Query.invoker('touchstart'),
+
+	touchstart: Query.invoker('touchstart'),
+
+	touchend: Query.invoker('touchend'),
+
+	touchcancel: Query.invoker('touchcancel'),
+
+	touchleave: Query.invoker('touchleave'),
+
+	touchmove: Query.invoker('touchmove'),
+
+	mousemove: Query.invoker('mousemove'),
+
+	mouseover: Query.invoker('mouseover'),
+
+	mouseout: Query.invoker('mouseout'),
+
+	mouseenter: Query.invoker('mouseenter'),
+
+	mouseleave: Query.invoker('mouseleave'),
+
+	scroll: Query.invoker('scroll'),
+
+	mouseup: Query.invoker('mouseup'),
+
+	mousedown: Query.invoker('mousedown'),
+
+	contextmenu: Query.invoker('contextmenu'),
+	
+	keyup: Query.invoker('keyup'),
+
+	keydown: Query.invoker('keydown'),
+
+	keypress: Query.invoker('keypress'),
+
 	style: function (key, value) {
 		for (var i = 0, l = this.length; i < l; ++i) {
 			this[i].style[key] = value;
@@ -59,7 +96,13 @@ Query.implement({
 
 	to: Query.invoker('to'),
 
+	width: Query.invoker('width'),
+
+	height: Query.invoker('height'),
+
 	border: Query.invoker('border'),
+
+	attr: Query.invoker('attr'),
 
 	borderRadius: Query.invoker('borderRadius'),
 

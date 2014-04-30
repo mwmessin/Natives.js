@@ -37,6 +37,12 @@ Element.extend({
 
 	detailedEvent: function (name, listener) {
 		return function (detail, delegation, handler) {
+			var context = {
+				detail: detail,
+				delegation: delegation,
+				handler: handler
+			};
+			
 			if (arguments.length == 0) { // event()
 				this.dispatchEvent(new CustomEvent(name, {detail: "*"}));
 			} else if (arguments.length == 1) {
@@ -46,18 +52,18 @@ Element.extend({
 						event.cancelBubble = true;
 					});
 				} else if (arguments[0].isFunction) { // event(handler)
-					handler = arguments[0];
-					detail = "*";
-					this.addEventListener(name, listener);
+					context.handler = arguments[0];
+					context.detail = "*";
+					this.addEventListener(name, listener.bind(context));
 				} else { // event(detail)
 					this.dispatchEvent(new CustomEvent(name, {detail: detail}));
 				}
 			} else if (arguments.length == 2) { // event(detail, handler)
-				handler = arguments[1];
-				delegation = null;
-				this.addEventListener(name, listener);
+				context.handler = arguments[1];
+				context.delegation = null;
+				this.addEventListener(name, listener.bind(context));
 			} else if (arguments.length == 3) { // event(detail, delegation, handler)
-				this.addEventListener(name, listener);
+				this.addEventListener(name, listener.bind(context));
 			}
 
 			return this;
@@ -67,16 +73,16 @@ Element.extend({
 	mouseListener: function (event) {
 		event.click = event.which ? event.which.toClick() : event.detail;
 		
-		if (! delegation || event.target.matches(delegation)) {
-			if (click == "*" || click == event.click) return handler(event);
+		if (! this.delegation || event.target.matches(this.delegation)) {
+			if (this.detail == "*" || this.detail == event.click) return this.handler(event);
 		}
 	},
 
 	keyListener: function (event) {
 		event.key = event.which ? event.which.toKey() : event.detail;
 
-		if (! delegation || event.target.matches(delegation)) {
-			if (key == "*" || key == event.key) return handler(event);
+		if (! this.delegation || event.target.matches(this.delegation)) {
+			if (this.detail == "*" || this.detail == event.key) return this.handler(event);
 		}
 	},
 
@@ -114,6 +120,8 @@ Element.implement({
 
 	isElement: true,
 
+	prototype: Element.prototype,
+
 	$: function () {
 		return new Query(this);
 	},
@@ -140,17 +148,17 @@ Element.implement({
 
 	scroll: Element.event('scroll'),
 
-	mouseup: Element.detailedEvent('mouseup', Event.mouseListener),
+	mouseup: Element.detailedEvent('mouseup', Element.mouseListener),
 
-	mousedown: Element.detailedEvent('mousedown', Event.mouseListener),
+	mousedown: Element.detailedEvent('mousedown', Element.mouseListener),
 
 	contextmenu: Element.event('contextmenu'),
 	
-	keyup: Element.detailedEvent('keyup', Event.keyListener),
+	keyup: Element.detailedEvent('keyup', Element.keyListener),
 
-	keydown: Element.detailedEvent('keydown', Event.keyListener),
+	keydown: Element.detailedEvent('keydown', Element.keyListener),
 
-	keypress: Element.detailedEvent('keypress', Event.keyListener),
+	keypress: Element.detailedEvent('keypress', Element.keyListener),
 
 	matches: Element.prototype.matches
 		|| Element.prototype.matchesSelector
@@ -188,6 +196,12 @@ Element.implement({
 			return this.contains(object)
 		}
 
+		return this;
+	},
+
+	attr: function (key, value) {
+		if (! value) return this.getAttribute(key);
+		this.setAttribute(key, value);
 		return this;
 	},
 

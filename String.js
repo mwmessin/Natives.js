@@ -84,7 +84,19 @@ String.implement({
 	},
 
 	stem: function () {
-		console.error('stub');
+		var postfixes = [
+			'able', 'ac', 'acity', 'age', 'ate',
+			'e', 'ed', 'en',
+			'ful', 'fy', 'fier',
+			'hood',
+			'i?ty', 'ian', 'ic', 'ie', 'ing', 'ious', 'ism', 'ite', 'ive',
+			'ling', 'ly',
+			'ship', 'sion', 'some',
+			'tion', 'tude',
+			'ward', 'ware',
+			'y'
+		];
+		return this.extract(new RegExp('(.+)' + postfixes.join('s?|(.+)') + 's?'))
 	}
 
 });

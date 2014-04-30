@@ -47,7 +47,8 @@ Object.implement({
 		var result = {};
 
 		for (var i = 0, l = arguments.length; i < l; ++i) {
-			result[arguments[i]] = this[arguments[i]];
+			var key = arguments[i];
+			result[key] = this[key];
 		}
 
 		return result;
