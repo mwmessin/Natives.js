@@ -32,6 +32,12 @@ Array.implement({
 		return this;
 	},
 
+	sortBy: function (key) {
+		return this.sort(function (a, b) {
+			return b[key].toNumber() - a[key].toNumber();
+		});
+	},
+
 	pushUnique: function (object) {
 		if (this.contains(object)) return this;
 		this.push(object);

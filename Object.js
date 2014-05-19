@@ -92,7 +92,7 @@ Object.implement({
 	},
 
 	callsString: function (callsDelimeter) {
-		// 
+		// convert a methods-args hash into a string
 		var calls = [];
 
 		for (var key in this) {
