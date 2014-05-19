@@ -100,66 +100,6 @@ Object.implement({
 		}
 
 		return calls.join(callsDelimeter);
-	},
-
-	xhr: function (options) {
-		var xhr = new XMLHttpRequest();
-		var url = options.to;
-
-		if (options.params) url += '?' + options.params.destructure('&', '=');
-
-		options.success && xhr.addEventListener('load', function () {
-			console.log(xhr.status, xhr);
-			options.success(xhr.response);
-		}, false);
-
-		options.error && xhr.addEventListener('error', function () {
-			console.error(xhr.status, xhr);
-			options.error(xhr.response);
-		}, false);
-
-		xhr.open(options.method || 'get', url, true);
-		xhr.send();
-	},
-
-	GET: function (url, success, error) {
-		return this.xhr({
-			method: 'get',
-			to: url,
-			params: this,
-			success: success,
-			error: error
-		});
-	},
-
-	POST: function (url, success, error) {
-		return this.xhr({
-			method: 'post',
-			to: url,
-			params: this,
-			success: success,
-			error: error
-		});
-	},
-
-	PUT: function (url, success, error) {
-		return this.xhr({
-			method: 'put',
-			to: url,
-			params: this,
-			success: success,
-			error: error
-		});
-	},
-
-	DELETE: function (url, success, error) {
-		return this.xhr({
-			method: 'delete',
-			to: url,
-			params: this,
-			success: success,
-			error: error
-		});
 	}
 
 });
