@@ -42,7 +42,7 @@ Element.extend({
 				delegation: delegation,
 				handler: handler
 			};
-			
+
 			if (arguments.length == 0) { // event()
 				this.dispatchEvent(new CustomEvent(name, {detail: "*"}));
 			} else if (arguments.length == 1) {
@@ -290,7 +290,7 @@ Element.implement({
 	layer: Element.style('z-index'),
 
 	transition: function (key, time) {
-		var transitions = this.style['transition'].delimObject(', ', ' ');
+		var transitions = this.style['transition'].structure(', ', ' ');
 
 		if (time == null) {
 			if (transitions[key] == null) return null;
@@ -298,7 +298,7 @@ Element.implement({
 		}
 
 		transitions[key] = time + 'ms';
-		this.style['transition'] = transitions.delimString(', ', ' ');
+		this.style['transition'] = transitions.destructure(', ', ' ');
 		return this;
 	},
 
@@ -321,6 +321,13 @@ Element.implement({
 		if (value == null) return (this.transform('translateY') || '0').toInt();
 		if (time != null) this.transition(Element.transformName, time);
 		this.transform('translateY', value + 'px');
+		return this;
+	},
+
+	z: function (value, time) {
+		if (value == null) return (this.transform('translateZ') || '0').toInt();
+		if (time != null) this.transition(Element.transformName, time);
+		this.transform('translateZ', value + 'px');
 		return this;
 	},
 

@@ -21,6 +21,7 @@ Query.extend({
 
 	invoker: function (key) {
 		return function () {
+			// call a method on each item in a collection
 			if (arguments.length == 0 && this[0]) return this[0].prototype[key].apply(this[i], []);
 
 			for (var i = 0, l = this.length; i < l; ++i) {
@@ -33,6 +34,7 @@ Query.extend({
 
 	transformer: function (key) {
 		return function () {
+			// call a method on each item in a collection returning the results
 			var transforms = [];
 
 			for (var transform, i = 0, l = this.length; i < l; ++i) {

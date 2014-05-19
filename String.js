@@ -42,7 +42,8 @@ String.implement({
 		];
 	},
 
-	delimObject: function (pairsDelimeter, pairDelimeter) {
+	structure: function (pairsDelimeter, pairDelimeter) {
+		// convert a key-value string into an object
 		var result = {};
 		var pairs = this.split(pairsDelimeter);
 

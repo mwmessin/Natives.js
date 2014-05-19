@@ -16,4 +16,4 @@ window.width = innerWidth;
 window.height = innerHeight;
 
 query = location.toString().split('?')[1];
-params = query ? query.delimObject('&', '=') : null;
+params = query ? query.structure('&', '=') : null;

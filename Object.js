@@ -1,8 +1,4 @@
 
-function load (key) {
-	return localStorage[key].toObject();
-}
-
 Object.implement({
 
 	isObject: true,
@@ -31,6 +27,10 @@ Object.implement({
 	save: function (key) {
 		localStorage[key] = this;
 		return this;
+	},
+
+	load: function (key) {
+		return localStorage[key].toObject();
 	},
 
 	keys: function () {
@@ -80,23 +80,8 @@ Object.implement({
 		return result;
 	},
 
-	xhr: function (options) {
-		var xhr = new XMLHttpRequest();
-		var url = options.to;
-
-		if (options.params) url += '?' + options.params.delimString('&', '=');
-
-		xhr.addEventListener('load', function () {
-			console.log(xhr.status, xhr);
-			options.success(xhr.response);
-		}, false);
-
-		xhr.open(options.method || 'get', url, true);
-		xhr.send();
-	},
-
-	// 
-	delimString: function (pairsDelimeter, pairDelimeter) {
+	destructure: function (pairsDelimeter, pairDelimeter) {
+		// convert an object into a key-value string
 		var pairs = [];
 
 		for (var key in this) {
@@ -106,8 +91,8 @@ Object.implement({
 		return pairs.join(pairsDelimeter);
 	},
 
-	// 
 	callsString: function (callsDelimeter) {
+		// 
 		var calls = [];
 
 		for (var key in this) {
@@ -115,6 +100,66 @@ Object.implement({
 		}
 
 		return calls.join(callsDelimeter);
+	},
+
+	xhr: function (options) {
+		var xhr = new XMLHttpRequest();
+		var url = options.to;
+
+		if (options.params) url += '?' + options.params.destructure('&', '=');
+
+		options.success && xhr.addEventListener('load', function () {
+			console.log(xhr.status, xhr);
+			options.success(xhr.response);
+		}, false);
+
+		options.error && xhr.addEventListener('error', function () {
+			console.error(xhr.status, xhr);
+			options.error(xhr.response);
+		}, false);
+
+		xhr.open(options.method || 'get', url, true);
+		xhr.send();
+	},
+
+	GET: function (url, success, error) {
+		return this.xhr({
+			method: 'get',
+			to: url,
+			params: this,
+			success: success,
+			error: error
+		});
+	},
+
+	POST: function (url, success, error) {
+		return this.xhr({
+			method: 'post',
+			to: url,
+			params: this,
+			success: success,
+			error: error
+		});
+	},
+
+	PUT: function (url, success, error) {
+		return this.xhr({
+			method: 'put',
+			to: url,
+			params: this,
+			success: success,
+			error: error
+		});
+	},
+
+	DELETE: function (url, success, error) {
+		return this.xhr({
+			method: 'delete',
+			to: url,
+			params: this,
+			success: success,
+			error: error
+		});
 	}
 
 });
