@@ -1,10 +1,4 @@
 
-function alias(method) {
-	return function () {
-		return this[method].apply(this, arguments);
-	}
-}
-
 Function.prototype.implement = function (members) {
 	var key, prototype = this.prototype;
 

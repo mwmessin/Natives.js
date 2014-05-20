@@ -205,35 +205,27 @@ Element.implement({
 		return this;
 	},
 
-	add: function (object) {
-		if (object.isString) {
-			var className = object.extract(/\.([_-\w]+)/);
-			if (className) this.addClass(className);
-
-			var attribute = object.extract(/\[([_-\w]+=['"]?[_-\w]+['"]?)\]/);
-			if (attribute) {
-				var pair = attribute.split('=');
-				var key = pair[0];
-				var value = pair[1].extract(/['"]?([_-\w]+)['"]?/);
-				this.setAttribute(key, value);
-			}
-		} else if (object.isElement) {
-			this.appendChild(object)
-		}
-
+	prepend: function (object) {
+		this.insertBefore(new Text(object), this.firstChild);
 		return this;
+	},
+
+	prependTo: function (parent) {
+		return parent.prepend(this);
 	},
 
 	append: function (object) {
 		this.appendChild(new Text(object))
+		return this;
 	},
 
-	to: function (parent) {
-		(parent.isString ? $(parent)[0] : parent).appendChild(this);
+	appendTo: function (parent) {
+		return parent.append(this);
 	},
 
 	html: function (markup) {
 		this.innerHTML = markup;
+		return this;
 	},
 
 	erase: function (object) {
@@ -286,8 +278,10 @@ Element.implement({
 		this.style.opacity = value;
 		return this;
 	},
+	
+	background: Element.style('background'),
 
-	layer: Element.style('z-index'),
+	shadow: Element.style(styleName('box-shadow')),
 
 	transition: function (key, time) {
 		var transitions = this.style['transition'].structure(', ', ' ');
@@ -337,6 +331,8 @@ Element.implement({
 		this.transform('rotate', value + 'deg');
 		return this;
 	},
+
+	layer: Element.style('z-index'),
 
 	top: Element.pxStyle('top'),
 	
