@@ -206,21 +206,21 @@ Element.implement({
 	},
 
 	prepend: function (object) {
-		this.insertBefore(new Text(object), this.firstChild);
+		this.insertBefore(object, this.firstChild);
 		return this;
 	},
 
 	prependTo: function (parent) {
-		return parent.prepend(this);
+		return $(parent)[0].prepend(this);
 	},
 
 	append: function (object) {
-		this.appendChild(new Text(object))
+		this.appendChild(object)
 		return this;
 	},
 
 	appendTo: function (parent) {
-		return parent.append(this);
+		return $(parent)[0].append(this);
 	},
 
 	html: function (markup) {
@@ -456,6 +456,14 @@ Element.implement({
 
 	center: function () {
 		return this.centerX().centerY();
+	},
+
+	context2d: function () {
+		return this.getContext('2d');
+	},
+
+	context3d: function () {
+		return this.getContext('3d');
 	}
 
 });

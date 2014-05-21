@@ -32,9 +32,10 @@ Array.implement({
 		return this;
 	},
 
-	sortBy: function (key) {
+	sortBy: function (method) {
 		return this.sort(function (a, b) {
-			return b[key].toNumber() - a[key].toNumber();
+			if (method.isString) return b[method].toNumber() - a[method].toNumber();
+			else return method(b).toNumber() - method(a).toNumber();
 		});
 	},
 
@@ -46,6 +47,14 @@ Array.implement({
 
 	random: function () {
 		return this[random() * this.length | 0];
+	},
+
+	max: function () {
+		return Math.max.apply(Math, this);
+	},
+
+	min: function () {
+		return Math.min.apply(Math, this);
 	},
 
 	sum: function () {

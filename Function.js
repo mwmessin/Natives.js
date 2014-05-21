@@ -28,6 +28,10 @@ Function.implement({
 		}
 	},
 
+	memoize: function () {},
+	curry: function () {},
+	bind: Function.prototype.bind || function () {},
+
 	debounce: function (wait) {
 		var callback = this, timeout;
 

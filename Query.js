@@ -96,7 +96,7 @@ Query.implement({
 		return this;
 	},
 
-	to: Query.invoker('to'),
+	appendTo: Query.invoker('appendTo'),
 
 	width: Query.invoker('width'),
 
@@ -131,6 +131,10 @@ Query.implement({
 
 	closest: Query.transformer('closest'),
 
-	find: Query.transformer('find')
+	find: Query.transformer('find'),
+
+	context2d: Query.invoker('context2d'),
+
+	context3d: Query.invoker('context3d')
 
 });
