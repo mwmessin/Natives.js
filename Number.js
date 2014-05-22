@@ -41,6 +41,10 @@ Number.implement({
 		})[this] || String.fromCharCode(this).toLowerCase();
 	},
 
+	stop: function () {
+		return clearTimeout(this);
+	},
+
 	pow: Math.pow.methodize(),
 
 	root: function (value) {

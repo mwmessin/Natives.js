@@ -28,8 +28,22 @@ Function.implement({
 		}
 	},
 
-	memoize: function () {},
-	curry: function () {},
+	memoize: function () {
+		var callback = this, memo = {};
+
+		return function () {
+			return memo[arguments.toString()] || memo[arguments.toString()] = callback.apply(null, arguments);
+		}
+	},
+
+	curry: function () {
+		var callback = this, args = arguments;
+
+		return function () {
+			return callback.apply(null, args.add(arguments));
+		}
+	},
+
 	bind: Function.prototype.bind || function () {},
 
 	debounce: function (wait) {
