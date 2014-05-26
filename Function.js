@@ -32,7 +32,7 @@ Function.implement({
 		var callback = this, memo = {};
 
 		return function () {
-			return memo[arguments.toString()] || memo[arguments.toString()] = callback.apply(null, arguments);
+			return memo[arguments.toString()] || (memo[arguments.toString()] = callback.apply(null, arguments));
 		}
 	},
 

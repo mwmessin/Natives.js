@@ -189,6 +189,10 @@ Element.implement({
 		return new Query(matches);
 	},
 
+	tag: function () {
+		return this.tagName.toLowerCase();
+	},
+
 	has: function (object) {
 		if (object.isString) {
 			return this.matches(object);
