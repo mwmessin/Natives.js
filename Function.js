@@ -37,14 +37,20 @@ Function.implement({
 	},
 
 	curry: function () {
-		var callback = this, args = arguments;
+		var callback = this, args = arguments.toArray();
 
 		return function () {
 			return callback.apply(null, args.add(arguments));
 		}
 	},
 
-	bind: Function.prototype.bind || function () {},
+	bind: Function.prototype.bind || function (context) {
+		var callback = this, args = arguments.toArray().slice(1);
+
+		return function () {
+			return callback.apply(context, args.add(arguments));
+		}
+	},
 
 	debounce: function (wait) {
 		var callback = this, timeout;

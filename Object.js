@@ -7,6 +7,10 @@ Object.implement({
 		return JSON.stringify(this);
 	},
 
+	toArray: function () {
+		return Array.prototype.slice.call(this, 0);
+	},
+
 	toCSON: function (depth) {
 		var space = '&nbsp;', depth = depth || 1;
 		var pretty = '';

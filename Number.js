@@ -83,6 +83,24 @@ Number.implement({
 	multiChoose: function (k) {
 		// number of combinations of k objects with repeats
 		return (this + k - 1).choose(k);
+	},
+
+	gcd: function (x) {
+		// greatest common divisor
+		if (this % x == 0) return [0, 1];
+		r = x.gcd(this % x);
+		return [r[1], r[0] - r[1] * (this / x).floor()];
+	},
+
+	powmod: function (x, n) {
+		// modular exponentiation
+		var a = this, r = 1;
+		while (x > 0) {
+			if (x % 2 == 1) r = (r * a) % n;
+			x /= 2;
+			a = (a * a) % n;
+		}
+		return r;
 	}
 
 });
