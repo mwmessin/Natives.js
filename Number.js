@@ -87,7 +87,7 @@ Number.implement({
 
 	gcd: function (x) {
 		// greatest common divisor
-		if (! x) return this;
+		if (! x) return +this;
 		return x.gcd(this % x);
 	},
 
