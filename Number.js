@@ -87,9 +87,8 @@ Number.implement({
 
 	gcd: function (x) {
 		// greatest common divisor
-		if (this % x == 0) return [0, 1];
-		r = x.gcd(this % x);
-		return [r[1], r[0] - r[1] * (this / x).floor()];
+		if (! x) return this;
+		return x.gcd(this % x);
 	},
 
 	powmod: function (x, n) {
