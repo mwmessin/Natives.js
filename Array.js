@@ -32,6 +32,16 @@ Array.implement({
 		return this;
 	},
 
+	from: function (object) {
+		var result = {};
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			result[this[i]] = object[this[i]];
+		}
+
+		return result;
+	},
+
 	sortBy: function (method) {
 		return this.sort(function (a, b) {
 			if (method.isString) return b[method].toNumber() - a[method].toNumber();

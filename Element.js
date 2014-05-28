@@ -116,6 +116,15 @@ Element.extend({
 
 });
 
+['touchstart', 'touchend', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 
+ 'touchmove', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 
+ 'scroll', 'contextmenu']
+.from({})
+.map(function (value, key) {
+	return Element.event(key);
+})
+.enhance(Element);
+
 Element.implement({
 
 	isElement: true,
@@ -126,33 +135,9 @@ Element.implement({
 		return new Query(this);
 	},
 
-	touchstart: Element.event('touchstart'),
-
-	touchend: Element.event('touchend'),
-
-	touchcancel: Element.event('touchcancel'),
-
-	touchleave: Element.event('touchleave'),
-
-	touchmove: Element.event('touchmove'),
-
-	mousemove: Element.event('mousemove'),
-
-	mouseover: Element.event('mouseover'),
-
-	mouseout: Element.event('mouseout'),
-
-	mouseenter: Element.event('mouseenter'),
-
-	mouseleave: Element.event('mouseleave'),
-
-	scroll: Element.event('scroll'),
-
 	mouseup: Element.detailedEvent('mouseup', Element.mouseListener),
 
 	mousedown: Element.detailedEvent('mousedown', Element.mouseListener),
-
-	contextmenu: Element.event('contextmenu'),
 	
 	keyup: Element.detailedEvent('keyup', Element.keyListener),
 

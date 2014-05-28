@@ -47,11 +47,13 @@ Object.implement({
 		return result;
 	},
 
-	only: function () {
+	only: function (keys) {
 		var result = {};
 
-		for (var i = 0, l = arguments.length; i < l; ++i) {
-			var key = arguments[i];
+		if (keys.isString) keys = arguments;
+
+		for (var i = 0, l = keys.length; i < l; ++i) {
+			var key = keys[i];
 			result[key] = this[key];
 		}
 
@@ -63,6 +65,16 @@ Object.implement({
 			this[key] = object[key];
 		}
 
+		return this;
+	},
+
+	into: function (object) {
+		object.extend(this);
+		return this;
+	},
+
+	enhance: function (type) {
+		type.implement(this);
 		return this;
 	},
 

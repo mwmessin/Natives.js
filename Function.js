@@ -4,7 +4,7 @@ Function.prototype.implement = function (members) {
 
 	for (key in members) {
 		if (members[key] != prototype[key]) {
-			if (prototype[key]) {
+			if (prototype.hasOwnProperty(key)) {
 				warn('overwriting "' + key + '" in ' + (this.name || this) + '.prototype');
 			}
 

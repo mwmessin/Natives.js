@@ -1,19 +1,32 @@
 
-var random = Math.random,
-	sqrt = Math.sqrt,
-	sin = Math.sin,
-	cos = Math.cos,
-	tan = Math.tan,
-	asin = Math.asin,
-	acos = Math.acos,
-	atan = Math.atan,
-	atan2 = Math.atan2,
-	pi = Math.PI,
-	e = Math.E;
+var e = Math.E,
+	pi = Math.PI;
+
+['random', 'sqrt', 'sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'atan2']
+.from(Math)
+.into(window);
+
+['pow', 'abs', 'ceil', 'floor', 'round', 'min', 'max']
+.from(Math)
+.map(function (f) {
+	return f.methodize();
+})
+.into(Number.prototype);
 
 function gcd(a, b) {
 	if (! b) return a;
 	return gcd(b, a % b);
+}
+
+function fibonacci(n) {
+	var sqrt5 = sqrt(5);
+	return ((1 + sqrt5).pow(n) - (1 - sqrt5).pow(n)) / ((2).pow(n) * sqrt5);
+}
+
+function prime(n) {
+	if (n < 1) return;
+	if (n = 1) return 2;
+	// now what?
 }
 
 Number.implement({
@@ -50,23 +63,9 @@ Number.implement({
 		return clearTimeout(this);
 	},
 
-	pow: Math.pow.methodize(),
-
 	root: function (value) {
 		return Math.pow(value, 1 / this);
 	},
-
-	abs: Math.abs.methodize(),
-
-	ceil: Math.ceil.methodize(),
-
-	floor: Math.floor.methodize(),
-
-	round: Math.round.methodize(),
-
-	min: Math.min.methodize(),
-
-	max: Math.max.methodize(),
 
 	clamp: function (min, max) {
 		return Math.max(Math.min(this, max), min);
