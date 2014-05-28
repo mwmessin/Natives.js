@@ -11,6 +11,11 @@ var random = Math.random,
 	pi = Math.PI,
 	e = Math.E;
 
+function gcd(a, b) {
+	if (! b) return a;
+	return gcd(b, a % b);
+}
+
 Number.implement({
 
 	isNumber: true,
@@ -83,12 +88,6 @@ Number.implement({
 	multiChoose: function (k) {
 		// number of combinations of k objects with repeats
 		return (this + k - 1).choose(k);
-	},
-
-	gcd: function (x) {
-		// greatest common divisor
-		if (! x) return +this;
-		return x.gcd(this % x);
 	},
 
 	powmod: function (x, n) {
