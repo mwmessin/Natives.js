@@ -23,6 +23,12 @@ String.implement({
 		return document.createElement(this);
 	},
 
+	toDashCase: function () {
+		return this.replace(/[A-Z]/g, function (match, offset) {
+			return (offset > 0 ? '-' : '') + match.toLowerCase();
+		});
+	},
+
 	save: function (key) {
 		localStorage[key] = '"' + this + '"';
 		return this;

@@ -125,6 +125,38 @@ Element.extend({
 	})
 	.enhance(Element);
 
+['mouseup', 'mousedown']
+	.from({})
+	.map(function (value, key) {
+		return Element.detailedEvent(key, Element.mouseListener);
+	})
+	.enhance(Element);
+
+['keyup', 'keydown', 'keypress']
+	.from({})
+	.map(function (value, key) {
+		return Element.detailedEvent(key, Element.keyListener);
+	})
+	.enhance(Element);
+
+['top', 'right', 'bottom', 'left', 'marginTop', 'marginRight', 'marginBottom',
+ 'marginLeft', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth',
+ 'borderLeftWidth', 'borderWidth', 'borderRadius', 'paddingTop', 'paddingRight',
+ 'paddingBottom', 'paddingLeft']
+	.from({})
+	.map(function (value, key) {
+		return Element.pxStyle(key.toDashCase());
+	})
+	.enhance(Element);
+
+['background', 'position', 'display', 'visibility', 'borderTop', 'borderRight', 
+ 'borderBottom', 'borderLeft']
+	.from({})
+	.map(function (value, key) {
+		return Element.style(key.toDashCase());
+	})
+	.enhance(Element);
+
 Element.implement({
 
 	isElement: true,
@@ -134,16 +166,6 @@ Element.implement({
 	$: function () {
 		return new Query(this);
 	},
-
-	mouseup: Element.detailedEvent('mouseup', Element.mouseListener),
-
-	mousedown: Element.detailedEvent('mousedown', Element.mouseListener),
-	
-	keyup: Element.detailedEvent('keyup', Element.keyListener),
-
-	keydown: Element.detailedEvent('keydown', Element.keyListener),
-
-	keypress: Element.detailedEvent('keypress', Element.keyListener),
 
 	matches: Element.prototype.matches
 		|| Element.prototype.matchesSelector
@@ -255,20 +277,12 @@ Element.implement({
 
 	src: Element.attribute('src'),
 
-	position: Element.style('position'),
-
-	display: Element.style('display'),
-
-	visibility: Element.style('visibility'),
-
 	opacity: function (value, time) {
 		if (value == null) return (this.style.opacity || '1').toNumber();
 		if (time != null) this.transition('opacity', time);
 		this.style.opacity = value;
 		return this;
 	},
-	
-	background: Element.style('background'),
 
 	shadow: Element.style(styleName('box-shadow')),
 
@@ -323,30 +337,6 @@ Element.implement({
 
 	layer: Element.style('z-index'),
 
-	top: Element.pxStyle('top'),
-	
-	right: Element.pxStyle('right'),
-	
-	bottom: Element.pxStyle('bottom'),
-	
-	left: Element.pxStyle('left'),
-
-	marginTop: Element.pxStyle('margin-top'),
-
-	marginRight: Element.pxStyle('margin-right'),
-
-	marginBottom: Element.pxStyle('margin-bottom'),
-
-	marginLeft: Element.pxStyle('margin-left'),
-
-	borderTop: Element.style('border-top'),
-
-	borderRight: Element.style('border-right'),
-
-	borderBottom: Element.style('border-bottom'),
-
-	borderLeft: Element.style('border-left'),
-
 	borderVertical: function (value) {
 		if (arguments.length == 0) return this.borderTop();
 		this.borderTop(value), this.borderBottom(value);
@@ -365,14 +355,6 @@ Element.implement({
 		return this;
 	},
 
-	borderTopWidth: Element.pxStyle('border-top-width'),
-
-	borderRightWidth: Element.pxStyle('border-right-width'),
-
-	borderBottomWidth: Element.pxStyle('border-bottom-width'),
-
-	borderLeftWidth: Element.pxStyle('border-left-width'),
-
 	borderVerticalWidth: function (value) {
 		if (arguments.length == 0) return this.borderTopWidth() + this.borderBottomWidth();
 		this.borderTopWidth(value), this.borderBottomWidth(value);
@@ -384,18 +366,6 @@ Element.implement({
 		this.borderLeftWidth(value), this.borderRightWidth(value);
 		return this;
 	},
-
-	borderWidth: Element.pxStyle('border-width'),
-
-	borderRadius: Element.pxStyle('border-radius'),
-
-	paddingTop: Element.pxStyle('padding-top'),
-
-	paddingRight: Element.pxStyle('padding-right'),
-
-	paddingBottom: Element.pxStyle('padding-bottom'),
-
-	paddingLeft: Element.pxStyle('padding-left'),
 
 	paddingVertical: function (value) {
 		if (arguments.length == 0) return this.paddingTop() + this.paddingBottom();
@@ -456,5 +426,3 @@ Element.implement({
 	}
 
 });
-
-document.html = document.body.parentNode;

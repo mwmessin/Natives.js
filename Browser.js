@@ -16,14 +16,19 @@ function resize(handler) {
 }
 
 resize(function (event) {
-	window.width = innerWidth;
-	window.height = innerHeight;
+  window.width = innerWidth;
+  window.height = innerHeight;
 });
 
-window.width = innerWidth;
-window.height = innerHeight;
+window.extend({
+  html: document.body.parentNode,
+  head: document.head,
+  body: document.body,
+  width: innerWidth,
+  height: innerHeight,
+  query: location.toString().split('?')[1]
+});
 
-query = location.toString().split('?')[1];
 params = query ? query.structure('&', '=') : null;
 
 function xhr(options) {
