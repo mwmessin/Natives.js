@@ -119,11 +119,11 @@ Element.extend({
 ['touchstart', 'touchend', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 
  'touchmove', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 
  'scroll', 'contextmenu']
-.from({})
-.map(function (value, key) {
-	return Element.event(key);
-})
-.enhance(Element);
+	.from({})
+	.map(function (value, key) {
+		return Element.event(key);
+	})
+	.enhance(Element);
 
 Element.implement({
 
@@ -431,16 +431,16 @@ Element.implement({
 
 	centerX: function () {
 		return this
-		.position('absolute')
-		.left('50%')
-		.marginLeft(-this.width(true) / 2 | 0);
+			.position('absolute')
+			.left('50%')
+			.marginLeft(-this.width(true) / 2 | 0);
 	},
 
 	centerY: function () {
 		return this
-		.position('absolute')
-		.top('50%')
-		.marginTop(-this.height(true) / 2 | 0);
+			.position('absolute')
+			.top('50%')
+			.marginTop(-this.height(true) / 2 | 0);
 	},
 
 	center: function () {

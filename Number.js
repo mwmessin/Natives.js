@@ -3,15 +3,15 @@ var e = Math.E,
 	pi = Math.PI;
 
 ['random', 'sqrt', 'sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'atan2']
-.from(Math)
-.into(window);
+	.from(Math)
+	.into(window);
 
 ['pow', 'abs', 'ceil', 'floor', 'round', 'min', 'max']
-.from(Math)
-.map(function (f) {
-	return f.methodize();
-})
-.into(Number.prototype);
+	.from(Math)
+	.map(function (f) {
+		return f.methodize();
+	})
+	.into(Number.prototype);
 
 function gcd(a, b) {
 	if (! b) return a;
