@@ -37,6 +37,11 @@ Object.implement({
 		return localStorage[key].toObject();
 	},
 
+	erase: function (key) {
+		localStorage.removeItem(key);
+		return this;
+	},
+
 	keys: function () {
 		var result = [];
 
