@@ -29,7 +29,7 @@ window.extend({
   query: location.toString().split('?')[1]
 });
 
-params = query ? query.structure('&', '=') : null;
+window.params = query ? query.structure('&', '=') : null;
 
 function xhr(options) {
   var xhr = new XMLHttpRequest();

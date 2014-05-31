@@ -96,18 +96,34 @@ Element.extend({
 
 	style: function (key) {
 		return function (value, time) {
-			if (value == null) return this.style[key];
+			var style = this.style;
+
+			if (value == null) return style[key];
 			if (time != null) this.transition(key, time);
-			this.style[key] = value;
+
+			(function () {
+				style[key] = value;
+			}).defer();
+
 			return this;
 		}
 	},
 
 	pxStyle: function (key) {
 		return function (value, time) {
-			if (value == null) return (this.style[key] || '0').toInt();
-			if (time != null) this.transition(key, time);
-			this.style[key] = value.isString ? value : value + 'px';
+			var style = this.style;
+
+			if (value == null) return (style[key] || '0px').toInt();
+
+			if (time != null) {
+				this.transition(key, time);
+				if (this.style[key] == '') style[key] = '0px';
+			}
+
+			(function () {
+				style[key] = value.isString ? value : value + 'px';
+			}).defer();
+
 			return this;
 		}
 	},
@@ -230,31 +246,21 @@ Element.implement({
 		return this;
 	},
 
+	remove: function (object) {
+		this.removeChild(object)
+		return this;
+	},
+
 	appendTo: function (parent) {
 		return $(parent)[0].append(this);
 	},
 
-	html: function (markup) {
-		this.innerHTML = markup;
-		return this;
+	removeFrom: function (parent) {
+		return $(parent)[0].remove(this);
 	},
 
-	erase: function (object) {
-		if (object.isString) {
-			var className = object.extract(/\.([_-\w]+)/);
-			if (className) this.removeClass(className);
-
-			var attribute = object.extract(/\[([_-\w]+=['"]?[_-\w]+['"]?)\]/);
-			if (attribute) {
-				var pair = attribute.split('=');
-				var key = pair[0];
-				var value = pair[1].extract(/['"]?([_-\w]+)['"]?/);
-				this.removeAttribute(key);
-			}
-		} else if (object.isElement) {
-			this.removeChild(object)
-		}
-
+	html: function (markup) {
+		this.innerHTML = markup;
 		return this;
 	},
 

@@ -11,7 +11,7 @@ var e = Math.E,
 	.map(function (f) {
 		return f.methodize();
 	})
-	.into(Number.prototype);
+	.enhance(Number);
 
 function gcd(a, b) {
 	if (! b) return a;
