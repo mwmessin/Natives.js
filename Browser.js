@@ -31,6 +31,10 @@ window.extend({
 
 window.params = query ? query.structure('&', '=') : null;
 
+function script(src) {
+  head.append($('<script>').attr('src', src)[0]);
+}
+
 function xhr(options) {
   var xhr = new XMLHttpRequest();
   var url = options.to;
