@@ -1,6 +1,12 @@
 
 var e = Math.E,
-	pi = Math.PI;
+	pi = Math.PI,
+	ln2 = Math.LN2,
+	ln10 = Math.LN10,
+	log2e = Math.LOG2E,
+	log10e = Math.LOG10E,
+	sqrt1_2 = Math.SQRT1_2,
+	sqrt2 = Math.SQRT2;
 
 ['random', 'sqrt', 'sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'atan2']
 	.from(Math)
@@ -12,6 +18,10 @@ var e = Math.E,
 		return f.methodize();
 	})
 	.enhance(Number);
+
+function now() {
+	return +new Date;
+}
 
 function gcd(a, b) {
 	if (! b) return a;

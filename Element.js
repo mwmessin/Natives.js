@@ -246,11 +246,6 @@ Element.implement({
 		return this;
 	},
 
-	remove: function (object) {
-		this.removeChild(object)
-		return this;
-	},
-
 	appendTo: function (parent) {
 		return $(parent)[0].append(this);
 	},

@@ -12,6 +12,10 @@ Array.implement({
 		return this;
 	},
 
+	append: function () {
+		return this.add(arguments);
+	},
+
 	index: function (i) {
 		if (this.length) while (i < 0) i += this.length;
 		return this[i];
@@ -57,6 +61,14 @@ Array.implement({
 
 	random: function () {
 		return this[random() * this.length | 0];
+	},
+
+	shuffle: function () {
+		this.sort(function () {
+			return random() - 0.5;
+		});
+
+		return this;
 	},
 
 	max: function () {

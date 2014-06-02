@@ -37,7 +37,7 @@ Function.implement({
 	},
 
 	curry: function () {
-		var callback = this, args = arguments.toArray();
+		var callback = this, args = arguments;
 
 		return function () {
 			return callback.apply(null, args.add(arguments));
@@ -45,7 +45,7 @@ Function.implement({
 	},
 
 	bind: Function.prototype.bind || function (context) {
-		var callback = this, args = arguments.toArray().slice(1);
+		var callback = this, args = arguments.slice(1);
 
 		return function () {
 			return callback.apply(context, args.add(arguments));

@@ -1,4 +1,3 @@
-
 Object.implement({
 
 	isObject: true,
@@ -47,6 +46,16 @@ Object.implement({
 
 		for (var key in this) {
 			result.push(key);
+		}
+
+		return result;
+	},
+
+	values: function () {
+		var result = [];
+
+		for (var key in this) {
+			result.push(this[key]);
 		}
 
 		return result;
@@ -101,6 +110,16 @@ Object.implement({
 		return result;
 	},
 
+	reduce: function (accumulator, callback) {
+		var result = accumulator || {};
+
+		for (var key in this) {
+			result = callback(result, this[key], key);
+		}
+
+		return result;
+	},
+
 	destructure: function (pairsDelimeter, pairDelimeter) {
 		// convert an object into a key-value string
 		var pairs = [];
@@ -124,3 +143,7 @@ Object.implement({
 	}
 
 });
+
+['slice', 'unshift', 'push', 'append', 'prepend', 'add']
+	.from(Array.prototype)
+	.enhance(Object);
