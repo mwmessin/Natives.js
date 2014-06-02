@@ -55,7 +55,7 @@ Array.implement({
 		var result = [];
 
 		for (var i = 0, l = this.length; i < l; ++i) {
-			if (this.contains(this[i])) continue;
+			if (result.contains(this[i])) continue;
 			result.push(this[i]);
 		}
 
