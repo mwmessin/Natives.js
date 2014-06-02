@@ -108,6 +108,16 @@ Object.implement({
 		return result;
 	},
 
+	keyMap: function (callback) {
+		var result = {};
+
+		for (var key in this) {
+			result[callback(key)] = this[key];
+		}
+
+		return result;
+	},
+
 	reduce: function (accumulator, callback) {
 		var result = accumulator || {};
 

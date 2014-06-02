@@ -1,12 +1,10 @@
 
-var e = Math.E,
-	pi = Math.PI,
-	ln2 = Math.LN2,
-	ln10 = Math.LN10,
-	log2e = Math.LOG2E,
-	log10e = Math.LOG10E,
-	sqrt1_2 = Math.SQRT1_2,
-	sqrt2 = Math.SQRT2;
+['E', 'PI', 'LN2', 'LN10', 'LOG2E', 'LOG10E', 'SQRT1_2', 'SQRT2']
+	.from(Math)
+	.keyMap(function (key) {
+		return key.toLowerCase();
+	})
+	.into(window);
 
 ['random', 'sqrt', 'sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'atan2']
 	.from(Math)
@@ -14,8 +12,8 @@ var e = Math.E,
 
 ['pow', 'abs', 'ceil', 'floor', 'round', 'min', 'max']
 	.from(Math)
-	.map(function (f) {
-		return f.methodize();
+	.map(function (value) {
+		return value.methodize();
 	})
 	.enhance(Number);
 
@@ -72,11 +70,11 @@ Number.implement({
 	stop: clearTimeout.methodize(),
 
 	root: function (value) {
-		return Math.pow(value, 1 / this);
+		return value.pow(1 / this);
 	},
 
 	clamp: function (min, max) {
-		return Math.max(Math.min(this, max), min);
+		return this.min(max).max(min);
 	},
 
 	wrap: function (min, max) {
