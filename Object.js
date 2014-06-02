@@ -2,9 +2,7 @@ Object.implement({
 
 	isObject: true,
 
-	toString: function () {
-		return JSON.stringify(this);
-	},
+	toString: JSON.stringify.methodize(JSON),
 
 	toArray: function () {
 		return Array.prototype.slice.call(this, 0);

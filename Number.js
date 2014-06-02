@@ -69,9 +69,7 @@ Number.implement({
 		})[this] || String.fromCharCode(this).toLowerCase();
 	},
 
-	stop: function () {
-		return clearTimeout(this);
-	},
+	stop: clearTimeout.methodize(),
 
 	root: function (value) {
 		return Math.pow(value, 1 / this);

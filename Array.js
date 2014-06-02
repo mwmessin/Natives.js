@@ -3,9 +3,7 @@ Array.implement({
 
 	isArray: true,
 
-	toString: function () {
-		return JSON.stringify(this);
-	},
+	toString: JSON.stringify.methodize(JSON),
 
 	add: function (array) {
 		this.push.apply(this, array);

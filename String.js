@@ -7,21 +7,13 @@ String.implement({
 		return this.toElement().$();
 	},
 
-	toInt: function (base) {
-		return parseInt(this, base);
-	},
+	toInt: parseInt.methodize(),
 
-	toNumber: function (base) {
-		return parseFloat(this, base);
-	},
+	toNumber: parseFloat.methodize(),
 
-	toObject: function () {
-		return JSON.parse(this);
-	},
+	toObject: JSON.parse.methodize(JSON),
 
-	toElement: function () {
-		return document.createElement(this);
-	},
+	toElement: document.createElement.methodize(document),
 
 	toDashCase: function () {
 		return this.replace(/[A-Z]/g, function (match, offset) {
