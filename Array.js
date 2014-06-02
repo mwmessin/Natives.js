@@ -51,10 +51,15 @@ Array.implement({
 		});
 	},
 
-	pushUnique: function (object) {
-		if (this.contains(object)) return this;
-		this.push(object);
-		return this;
+	unique: function () {
+		var result = [];
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			if (this.contains(this[i])) continue;
+			result.push(this[i]);
+		}
+
+		return result;
 	},
 
 	random: function () {

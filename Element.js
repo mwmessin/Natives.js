@@ -261,7 +261,7 @@ Element.implement({
 
 	addClass: function (string) {
 		var classes = this.classes();
-		if (classes) this.classes(classes.split(' ').pushUnique(string).join(' '));
+		if (classes) this.classes(classes.split(' ').append(string).unique().join(' '));
 		else this.classes(string);
 		return this;
 	},
