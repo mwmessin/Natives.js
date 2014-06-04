@@ -21,6 +21,18 @@ String.implement({
 		});
 	},
 
+	toSnakeCase: function () {
+		return this.replace(/[A-Z]/g, function (match, offset) {
+			return (offset > 0 ? '_' : '') + match.toLowerCase();
+		});
+	},
+
+	toCamelCase: function () {
+		return this.replace(/-(.)/g, function (match, first, offset) {
+			return first.toUpperCase();
+		});
+	},
+
 	save: function (key) {
 		localStorage[key] = '"' + this + '"';
 		return this;
