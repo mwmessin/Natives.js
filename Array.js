@@ -96,6 +96,10 @@ Array.implement({
 		return this.sum() / this.length;
 	},
 
+	median: function () {
+		return this[this.length / 2];
+	},
+
 	stdDev: function () {
 		var devs = 0;
 		var mean = this.mean();
