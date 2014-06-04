@@ -80,6 +80,14 @@ Object.implement({
 		return this;
 	},
 
+	defaults: function (object) {
+		for (var key in object) {
+			if (this[key] == null) this[key] = object[key];
+		}
+
+		return this;
+	},
+
 	into: function (object) {
 		object.extend(this);
 		return this;
