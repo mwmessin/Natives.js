@@ -16,20 +16,20 @@ String.implement({
 	toElement: document.createElement.methodize(document),
 
 	toDashCase: function () {
-		return this.replace(/[A-Z]/g, function (match, offset) {
-			return (offset > 0 ? '-' : '') + match.toLowerCase();
+		return this.replace(/([A-Z])|_(.)/g, function (match, first, second, offset) {
+			return (offset > 0 ? '-' : '') + (first || second).toLowerCase();
 		});
 	},
 
 	toSnakeCase: function () {
-		return this.replace(/[A-Z]/g, function (match, offset) {
-			return (offset > 0 ? '_' : '') + match.toLowerCase();
+		return this.replace(/([A-Z])|-(.)/g, function (match, first, second, offset) {
+			return (offset > 0 ? '_' : '') + (first || second).toLowerCase();
 		});
 	},
 
 	toCamelCase: function () {
-		return this.replace(/-(.)/g, function (match, first, offset) {
-			return first.toUpperCase();
+		return this.replace(/-(.)|_(.)/g, function (match, first, second, offset) {
+			return (first || second).toUpperCase();
 		});
 	},
 
