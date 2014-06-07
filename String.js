@@ -108,6 +108,15 @@ String.implement({
 			'y'
 		];
 		return this.extract(new RegExp('(.+)' + postfixes.join('s?|(.+)') + 's?'))
+	},
+
+	prefixStyle: function () {
+		var style = document.body.style;
+		if (style[this] != null) return this;
+		if (style['-ms-' + this] != null) return '-ms-' + this;
+		if (style['-moz-' + this] != null) return '-moz-' + this;
+		if (style['-webkit-' + this] != null) return '-webkit-' + this;
+		return this;
 	}
 
 });

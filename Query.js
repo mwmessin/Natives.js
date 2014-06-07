@@ -53,7 +53,7 @@ Query.extend({
 
 ['touchstart', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
- 'mouseup', 'mousedown', 'contextmenu', 	'keyup', 'keydown', 'keypress', 'appendTo', 
+ 'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 'appendTo', 
  'width', 'height', 'top', 'border', 'attr', 'borderRadius', 'center', 'context2d', 
  'context3d']
 	.from({})

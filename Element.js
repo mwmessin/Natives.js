@@ -1,12 +1,4 @@
 
-function styleName(base) {
-	var style = document.body.style;
-	if (style[base] != null) return base;
-	if (style['-ms-' + base] != null) return '-ms-' + base;
-	if (style['-moz-' + base] != null) return '-moz-' + base;
-	if (style['-webkit-' + base] != null) return '-webkit-' + base;
-}
-
 Element.extend({
 
 	event: function (name) {
@@ -128,7 +120,7 @@ Element.extend({
 		}
 	},
 
-	transformName: styleName('transform')
+	transformName: 'transform'.prefixStyle()
 
 });
 
@@ -285,7 +277,7 @@ Element.implement({
 		return this;
 	},
 
-	shadow: Element.style(styleName('box-shadow')),
+	shadow: Element.style('box-shadow'.prefixStyle()),
 
 	transition: function (key, time) {
 		var transitions = this.style['transition'].structure(', ', ' ');
