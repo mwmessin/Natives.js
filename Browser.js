@@ -32,7 +32,7 @@ window.extend({
 window.params = query ? query.structure('&', '=') : null;
 
 function script(src) {
-  head.append($('<script>').attr('src', src)[0]);
+  $('<script>').attr('src', src).appendTo(head);
 }
 
 function xhr(options) {

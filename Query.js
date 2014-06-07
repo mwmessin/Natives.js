@@ -1,5 +1,6 @@
 
 function $(selector) {
+	if (selector.isQuery) return selector;
 	if (selector.isFunction) return selector.defer();
 
 	if (selector.isString) {
