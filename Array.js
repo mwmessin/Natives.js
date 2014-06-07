@@ -11,7 +11,13 @@ Array.implement({
 	},
 
 	append: function () {
-		return this.add(arguments);
+		this.push.apply(this, arguments);
+		return this;
+	},
+
+	prepend: function () {
+		this.unshift.apply(this, arguments);
+		return this;
 	},
 
 	index: function (i) {
