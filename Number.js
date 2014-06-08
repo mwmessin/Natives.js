@@ -46,25 +46,9 @@ Number.implement({
 	},
 
 	toKey: function () {
-		return ({
-			192: "`",
-			189: "-",
-			187: "=",
-			91: "meta",
-			40: "down",
-			39: "right",
-			38: "up",
-			37: "left",
-			32: "space",
-			27: "esc",
-			20: "capslock",
-			18: "option",
-			17: "control",
-			16: "shift",
-			13: "return",
-			9: "tab",
-			8: "delete"
-		})[this] || String.fromCharCode(this).toLowerCase();
+		return ({192: "`", 189: "-", 187: "=", 91: "meta", 40: "down", 39: "right",
+			38: "up", 37: "left", 32: "space", 27: "esc", 20: "capslock", 18: "option",
+			17: "control", 16: "shift", 13: "return", 9: "tab", 8: "delete"})[this] || String.fromCharCode(this).toLowerCase();
 	},
 
 	stop: clearTimeout.methodize(),
