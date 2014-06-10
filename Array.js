@@ -92,7 +92,7 @@ Array.implement({
 		var result = null;
 
 		for (var i = 0, l = this.length; i < l; ++i) {
-			result ||= this[i];
+			result = result || this[i];
 		}
 
 		return result;
@@ -102,7 +102,7 @@ Array.implement({
 		var result = null;
 
 		for (var i = 0, l = this.length; i < l; ++i) {
-			result &&= this[i];
+			result = result && this[i];
 		}
 
 		return result;
