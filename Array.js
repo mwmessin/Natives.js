@@ -88,6 +88,26 @@ Array.implement({
 		return Math.min.apply(Math, this);
 	},
 
+	or: function () {
+		var result = null;
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			result ||= this[i];
+		}
+
+		return result;
+	},
+
+	and: function () {
+		var result = null;
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			result &&= this[i];
+		}
+
+		return result;
+	},
+
 	sum: function () {
 		var sum = 0;
 
@@ -110,9 +130,9 @@ Array.implement({
 		var devs = 0;
 		var mean = this.mean();
 
-		for (var dev, i = 0, l = this.length; i < l; ++i) {
-			dev = this[i] - mean;
-			devs += dev * dev;
+		for (var variance, i = 0, l = this.length; i < l; ++i) {
+			variance = this[i] - mean;
+			devs += variance * variance;
 		}
 
 		return sqrt(devs / this.length);
