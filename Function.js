@@ -20,6 +20,11 @@ Function.implement({
 
 	isFunction: true,
 
+	leastFixedPoint: function () {
+		// roughly:
+			if (this(i) == i) return i;
+	},
+
 	methodize: function (context) {
 		var callback = this;
 
