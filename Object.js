@@ -73,6 +73,8 @@ Object.implement({
 	},
 
 	has: function (keys) {
+		if (! keys.isArray) keys = keys.keys();
+
 		for (var i = 0, l = keys.length; i < l; ++i) {
 			var key = keys[i];
 			if (! this.hasOwnProperty(key)) return false;
