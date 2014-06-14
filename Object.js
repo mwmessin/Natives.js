@@ -72,6 +72,15 @@ Object.implement({
 		return result;
 	},
 
+	has: function (keys) {
+		for (var i = 0, l = keys.length; i < l; ++i) {
+			var key = keys[i];
+			if (! this.hasOwnProperty(key)) return false;
+		}
+
+		return true;
+	},
+
 	extend: function (object) {
 		for (var key in object) {
 			this[key] = object[key];
