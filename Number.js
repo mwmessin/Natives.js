@@ -1,7 +1,7 @@
 
 ['E', 'PI', 'LN2', 'LN10', 'LOG2E', 'LOG10E', 'SQRT1_2', 'SQRT2']
 	.from(Math)
-	.keyMap(function (key) {
+	.mapKeys(function (key) {
 		return key.toLowerCase();
 	})
 	.into(window);

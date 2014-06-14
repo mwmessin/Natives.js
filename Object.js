@@ -135,7 +135,7 @@ Object.implement({
 		return result;
 	},
 
-	keyMap: function (callback) {
+	mapKeys: function (callback) {
 		var result = {};
 
 		for (var key in this) {
