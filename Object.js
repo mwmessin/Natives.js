@@ -81,6 +81,14 @@ Object.implement({
 		return true;
 	},
 
+	equals: function (object) {
+		for (var key in this) {
+			if (object[key] != this[key]) return false;
+		}
+
+		return true;
+	},
+
 	extend: function (object) {
 		for (var key in object) {
 			this[key] = object[key];
