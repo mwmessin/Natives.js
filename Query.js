@@ -25,7 +25,7 @@ Query.extend({
 	invoker: function (key) {
 		return function () {
 			// call a method on each item in a collection
-			if (arguments.length == 0 && this[0]) return this[0].prototype[key].apply(this[i], []);
+			if (arguments.length == 0 && this[0]) return this[0].prototype[key].apply(this[0], []);
 
 			for (var i = 0, l = this.length; i < l; ++i) {
 				this[i].prototype[key].apply(this[i], arguments);
