@@ -53,14 +53,17 @@ Query.extend({
 
 ['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
- 'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 'appendTo', 
+ 'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 
  'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'attr',
  'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'paddingTop', 
- 'paddingRight', 'paddingBottom', 'paddingLeft', 'opacity', 'border',
+ 'paddingVertical', 'paddingHorizontal', 'paddingRight', 'paddingBottom', 
+ 'paddingLeft', 'opacity', 'border', 'borderVertical', 'borderHorizontal', 
  'borderTop', 'borderRight', 'borderBottom', 'borderLeft', 'borderTopWidth', 
  'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderWidth', 
- 'borderRadius', 'center', 'background', 'display', 'visibility', 
- 'context2d', 'context3d']
+ 'borderRadius', 'center', 'centerX', 'centerY', 'background', 'display', 
+ 'classes', 'addClass', 'removeClass', 'html', 'appendTo', 'removeFrom', 
+ 'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
+ 'tooltip', 'shadow', 'context2d', 'context3d']
 	.from({})
 	.map(function (value, key) {
 		return Query.invoker(key);
