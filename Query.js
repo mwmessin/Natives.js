@@ -54,10 +54,13 @@ Query.extend({
 ['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
  'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 'appendTo', 
- 'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'border', 'attr',
- 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 
- 'borderWidth', 'borderRadius', 'center', 'background', 'display', 'context2d', 
- 'context3d']
+ 'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'attr',
+ 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'paddingTop', 
+ 'paddingRight', 'paddingBottom', 'paddingLeft', 'opacity', 'border',
+ 'borderTop', 'borderRight', 'borderBottom', 'borderLeft', 'borderTopWidth', 
+ 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderWidth', 
+ 'borderRadius', 'center', 'background', 'display', 'visibility', 
+ 'context2d', 'context3d']
 	.from({})
 	.map(function (value, key) {
 		return Query.invoker(key);
