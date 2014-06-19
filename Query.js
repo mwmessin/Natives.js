@@ -51,10 +51,12 @@ Query.extend({
 
 });
 
-['touchstart', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
+['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
  'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 'appendTo', 
- 'width', 'height', 'top', 'border', 'attr', 'borderRadius', 'center', 'context2d', 
+ 'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'border', 'attr',
+ 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 
+ 'borderWidth', 'borderRadius', 'center', 'background', 'display', 'context2d', 
  'context3d']
 	.from({})
 	.map(function (value, key) {
