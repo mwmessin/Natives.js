@@ -21,8 +21,9 @@ Function.implement({
 	isFunction: true,
 
 	leastFixedPoint: function () {
-		// roughly:
+		while (this(i) != i) {
 			if (this(i) == i) return i;
+		}
 	},
 
 	methodize: function (context) {
