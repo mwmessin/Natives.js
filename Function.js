@@ -21,6 +21,7 @@ Function.implement({
 	isFunction: true,
 
 	leastFixedPoint: function () {
+		// ???
 		while (this(i) != i) {
 			if (this(i) == i) return i;
 		}
