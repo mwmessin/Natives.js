@@ -24,7 +24,7 @@ Query.extend({
 
 	invoker: function (key) {
 		return function () {
-			// call a method on each item in a collection
+			// call a method on each item in a Query set
 			if (arguments.length == 0 && this[0]) return this[0].prototype[key].apply(this[0], []);
 
 			for (var i = 0, l = this.length; i < l; ++i) {
@@ -37,7 +37,7 @@ Query.extend({
 
 	transformer: function (key) {
 		return function () {
-			// call a method on each item in a collection returning the results
+			// call a method on each item in a Query set, returning the results
 			var transforms = [];
 
 			for (var transform, i = 0, l = this.length; i < l; ++i) {
@@ -62,7 +62,7 @@ Query.extend({
  'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderWidth', 
  'borderRadius', 'center', 'centerX', 'centerY', 'background', 'display', 
  'classes', 'addClass', 'removeClass', 'html', 'appendTo', 'removeFrom', 
- 'prependTo', 'prepend', 'has', 'tag', 'matches',
+ 'prependTo', 'prepend', 'has', 'tag', 'matches', 'src',
  'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
  'tooltip', 'shadow', 'context2d', 'context3d']
 	.from({})
