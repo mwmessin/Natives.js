@@ -59,6 +59,10 @@ Number.implement({
 		return value.pow(1 / this);
 	},
 
+	between: function (min, max) {
+		return min < this && this < max;
+	},
+
 	clamp: function (min, max) {
 		return this.min(max).max(min);
 	},
