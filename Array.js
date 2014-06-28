@@ -76,7 +76,7 @@ Array.implement({
 		var result = [], clone = this.slice(0);
 
 		while (clone.length) {
-			result.push(clone.splice(random() * clone.length, 1));
+			result.push(clone.splice(random() * clone.length, 1)[0]);
 		}
 
 		return result;
