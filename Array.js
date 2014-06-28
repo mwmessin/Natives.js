@@ -73,11 +73,13 @@ Array.implement({
 	},
 
 	shuffle: function () {
-		this.sort(function () {
-			return random() - 0.5;
-		});
+		var result = [], clone = this.slice(0);
 
-		return this;
+		while (clone.length) {
+			result.push(clone.splice(random() * clone.length, 1));
+		}
+
+		return result;
 	},
 
 	max: function () {
