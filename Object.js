@@ -39,7 +39,7 @@ Object.implement({
 		return this;
 	},
 
-	keys: function () {
+	keys: Object.getOwnPropertyNames.methodize() || function () {
 		var result = [];
 
 		for (var key in this) {
