@@ -175,7 +175,11 @@ Object.implement({
 		}
 
 		return calls.join(callsDelimeter);
-	}
+	},
+
+	freeze: Object.freeze.methodize(),
+
+	seal: Object.seal.methodize()
 
 });
 
