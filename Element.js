@@ -175,6 +175,11 @@ Element.implement({
 		return new Query(this);
 	},
 
+	off: function (name, listener) {
+		this.removeEventListener(name, listener);
+		return this;
+	},
+
 	matches: Element.prototype.matches
 		|| Element.prototype.matchesSelector
 		|| Element.prototype.msMatchesSelector
