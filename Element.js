@@ -158,7 +158,7 @@ Element.extend({
 	.enhance(Element);
 
 ['background', 'position', 'display', 'visibility', 'borderTop', 'borderRight', 
- 'borderBottom', 'borderLeft']
+ 'borderBottom', 'borderLeft', 'float']
 	.from({})
 	.map(function (value, key) {
 		return Element.style(key.toDashCase());

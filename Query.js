@@ -62,7 +62,7 @@ Query.extend({
  'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderWidth', 
  'borderRadius', 'center', 'centerX', 'centerY', 'background', 'display', 
  'classes', 'addClass', 'removeClass', 'html', 'appendTo', 'removeFrom', 
- 'prependTo', 'prepend', 'has', 'tag', 'matches', 'src',
+ 'prependTo', 'prepend', 'has', 'tag', 'matches', 'src', 'float',
  'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
  'tooltip', 'shadow', 'context2d', 'context3d']
 	.from({})
