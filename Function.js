@@ -21,7 +21,7 @@ Function.implement({
 	isFunction: true,
 
 	leastFixedPoint: function () {
-		// ???
+		// ??? find the smallest input which is unchanged
 		while (this(i) != i) {
 			if (this(i) == i) return i;
 		}

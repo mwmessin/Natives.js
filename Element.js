@@ -35,27 +35,38 @@ Element.extend({
 				handler: handler
 			};
 
+			this.listeners = this.listeners || [];
+
 			if (arguments.length == 0) { // event()
 				this.dispatchEvent(new CustomEvent(name, {detail: "*"}));
 			} else if (arguments.length == 1) {
 				if (arguments[0] == false) { // event(false)
-					this.addEventListener(name, function (event) {
-						event.preventDefault();
-						event.cancelBubble = true;
-					});
+					// this.addEventListener(name, function (event) {
+					// 	event.preventDefault();
+					// 	event.cancelBubble = true;
+					// });
+					for (var i = 0; i < this.listeners; ++i) {
+						this.removeEventListener(name, this.listeners[i]);
+					}
 				} else if (arguments[0].isFunction) { // event(handler)
 					context.handler = arguments[0];
 					context.detail = "*";
-					this.addEventListener(name, listener.bind(context));
+					var bound = listener.bind(context);
+					this.listeners.push(bound);
+					this.addEventListener(name, bound);
 				} else { // event(detail)
 					this.dispatchEvent(new CustomEvent(name, {detail: detail}));
 				}
 			} else if (arguments.length == 2) { // event(detail, handler)
 				context.handler = arguments[1];
 				context.delegation = null;
-				this.addEventListener(name, listener.bind(context));
+				var bound = listener.bind(context);
+				this.listeners.push(bound);
+				this.addEventListener(name, bound);
 			} else if (arguments.length == 3) { // event(detail, delegation, handler)
-				this.addEventListener(name, listener.bind(context));
+				var bound = listener.bind(context);
+				this.listeners.push(bound);
+				this.addEventListener(name, bound);
 			}
 
 			return this;
