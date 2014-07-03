@@ -22,6 +22,10 @@ Function.implement({
 
 	leastFixedPoint: function () {
 		// ??? find the smallest input which is unchanged
+
+		// kleene fixed point
+
+		// lfp (f) = sup(f_n (least))
 		while (this(i) != i) {
 			if (this(i) == i) return i;
 		}
