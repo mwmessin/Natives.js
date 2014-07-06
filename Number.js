@@ -45,6 +45,10 @@ Number.implement({
 		return ["left", "middle", "right"][this - 1];
 	},
 
+	toHex: function () {
+		return this.toString(16);
+	},
+
 	toKey: function () {
 		return ({
 			192: "`", 189: "-", 187: "=", 91: "meta", 40: "down", 39: "right", 38: "up", 

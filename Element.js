@@ -168,8 +168,8 @@ Element.extend({
 	})
 	.enhance(Element);
 
-['background', 'position', 'display', 'visibility', 'borderTop', 'borderRight', 
- 'borderBottom', 'borderLeft', 'float']
+['background', 'backgroundColor', 'display', 'visibility', 'borderTop', 'borderRight', 
+ 'borderBottom', 'borderLeft', 'position', 'float']
 	.from({})
 	.map(function (value, key) {
 		return Element.style(key.toDashCase());

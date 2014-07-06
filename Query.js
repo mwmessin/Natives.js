@@ -60,11 +60,11 @@ Query.extend({
  'paddingLeft', 'opacity', 'border', 'borderVertical', 'borderHorizontal', 
  'borderTop', 'borderRight', 'borderBottom', 'borderLeft', 'borderTopWidth', 
  'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderWidth', 
- 'borderRadius', 'center', 'centerX', 'centerY', 'background', 'display', 
+ 'borderRadius', 'center', 'centerX', 'centerY', 'background', 'backgroundColor',
  'classes', 'addClass', 'removeClass', 'html', 'appendTo', 'removeFrom', 
  'prependTo', 'prepend', 'has', 'tag', 'matches', 'src', 'float', 'off',
  'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
- 'tooltip', 'shadow', 'context2d', 'context3d']
+ 'tooltip', 'shadow', 'context2d', 'context3d', 'display']
 	.from({})
 	.map(function (value, key) {
 		return Query.invoker(key);

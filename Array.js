@@ -5,6 +5,16 @@ Array.implement({
 
 	toString: JSON.stringify.methodize(JSON),
 
+	toColorHex: function () {
+		var red = (this[0] * 255 | 0).toHex();
+		red = '0'.times(2 - red.length) + red;
+		var green = (this[1] * 255 | 0).toHex();
+		green = '0'.times(2 - green.length) + green;
+		var blue = (this[2] * 255 | 0).toHex();
+		blue = '0'.times(2 - blue.length) + blue;
+		return "#" + red + green + blue;
+	},
+
 	add: function (array) {
 		this.push.apply(this, array);
 		return this;
