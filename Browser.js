@@ -31,6 +31,14 @@ window.extend({
 
 window.params = query ? query.structure('&', '=') : null;
 
+$('body').mousedown(function () {
+  window.dragging = true
+});
+
+$('body').mouseup(function () {
+  window.dragging = false
+});
+
 function script(src) {
   $('<script>').attr('src', src).appendTo(head);
 }

@@ -169,7 +169,7 @@ Element.extend({
 	.enhance(Element);
 
 ['background', 'backgroundColor', 'display', 'visibility', 'borderTop', 'borderRight', 
- 'borderBottom', 'borderLeft', 'position', 'float']
+ 'borderBottom', 'borderLeft', 'position', 'float', 'cursor']
 	.from({})
 	.map(function (value, key) {
 		return Element.style(key.toDashCase());

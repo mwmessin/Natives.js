@@ -12,7 +12,7 @@ Array.implement({
 		green = '0'.times(2 - green.length) + green;
 		var blue = (this[2] * 255 | 0).toHex();
 		blue = '0'.times(2 - blue.length) + blue;
-		return "#" + red + green + blue;
+		return '#' + red + green + blue;
 	},
 
 	add: function (array) {
@@ -45,7 +45,7 @@ Array.implement({
 
 	remove: function (object) {
 		var index = this.indexOf(object);
-		if (index === -1 ) return;
+		if (index === -1) return;
 		this.splice(index, 1);
 		return this;
 	},

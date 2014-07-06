@@ -64,7 +64,7 @@ Query.extend({
  'classes', 'addClass', 'removeClass', 'html', 'appendTo', 'removeFrom', 
  'prependTo', 'prepend', 'has', 'tag', 'matches', 'src', 'float', 'off',
  'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
- 'tooltip', 'shadow', 'context2d', 'context3d', 'display']
+ 'tooltip', 'shadow', 'context2d', 'context3d', 'display', 'cursor']
 	.from({})
 	.map(function (value, key) {
 		return Query.invoker(key);
