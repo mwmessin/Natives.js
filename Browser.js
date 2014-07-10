@@ -31,11 +31,11 @@ window.extend({
 
 window.params = query ? query.structure('&', '=') : null;
 
-$('body').mousedown(function () {
+$('body').mousedown('left', function () {
   window.dragging = true
 });
 
-$('body').mouseup(function () {
+$('body').mouseup('left', function () {
   window.dragging = false
 });
 

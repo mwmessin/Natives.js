@@ -186,6 +186,14 @@ Element.implement({
 		return new Query(this);
 	},
 
+	drag: function (handler) {
+		this.mousemove(function (event) {
+			if (window.dragging) handler(event);
+		});
+
+		return this;
+	},
+
 	off: function (name, listener) {
 		this.removeEventListener(name, listener);
 		return this;
