@@ -20,15 +20,15 @@ Function.implement({
 
 	isFunction: true,
 
-	leastFixedPoint: function () {
-		// ??? find the smallest input which is unchanged
+	leastFixedPoint: function (i) {
+		var next = this(i);
 
-		// kleene fixed point
-
-		// lfp (f) = sup(f_n (least))
-		while (this(i) != i) {
-			if (this(i) == i) return i;
+		while (i != next) {
+			i = next;
+			next = this(i);
 		}
+
+		return i;
 	},
 
 	methodize: function (context) {
