@@ -51,7 +51,7 @@ Query.extend({
 
 });
 
-['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 
+['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 'drag',
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
  'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 
  'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'attr',
