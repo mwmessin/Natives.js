@@ -41,10 +41,6 @@ Element.extend({
 				this.dispatchEvent(new CustomEvent(name, {detail: "*"}));
 			} else if (arguments.length == 1) {
 				if (arguments[0] == false) { // event(false)
-					// this.addEventListener(name, function (event) {
-					// 	event.preventDefault();
-					// 	event.cancelBubble = true;
-					// });
 					for (var i = 0; i < this.listeners; ++i) {
 						this.removeEventListener(name, this.listeners[i]);
 					}
@@ -137,7 +133,8 @@ Element.extend({
 
 ['touchstart', 'touchend', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 
  'touchmove', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 
- 'scroll', 'contextmenu']
+ 'scroll', 'contextmenu', 'ended', 'progress', 'loadeddata', 
+ 'loadedmetadata', 'canplay']
 	.from({})
 	.map(function (value, key) {
 		return Element.event(key);
@@ -194,6 +191,10 @@ Element.implement({
 		return this;
 	},
 
+	start: function (handler) {
+		return Element.event('play');
+	},
+
 	off: function (name, listener) {
 		this.removeEventListener(name, listener);
 		return this;
@@ -204,6 +205,21 @@ Element.implement({
 		|| Element.prototype.msMatchesSelector
 		|| Element.prototype.mozMatchesSelector
 		|| Element.prototype.webkitMatchesSelector,
+
+	siblings: function (selector) {
+		var children = $(this.parentElement).children(selector);
+		return children.remove(this);
+	},
+
+	next: function (selector) {
+		var children = $(this.parentElement).children(selector);
+		return children.index(children.indexOf(this) + 1);
+	},
+
+	prev: function (selector) {
+		var children = $(this.parentElement).children(selector);
+		return children.index(children.indexOf(this) - 1);
+	},
 
 	closest: function (selector) {
 		var element = this;

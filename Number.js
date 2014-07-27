@@ -71,8 +71,12 @@ Number.implement({
 		return this.min(max).max(min);
 	},
 
+	mod: function (n) {
+		return (this % n + n) % n;
+	},
+
 	wrap: function (min, max) {
-		return min + ((this - min) % (max - min));
+		return min + ((this - min).mod(max - min));
 	},
 
 	factorial: function () {

@@ -41,7 +41,7 @@ Query.extend({
 			var transforms = [];
 
 			for (var transform, i = 0, l = this.length; i < l; ++i) {
-				transform = this[i][key].prototype[key].apply(this[i], arguments);
+				transform = this[i].prototype[key].apply(this[i], arguments);
 				transform.isQuery ? transforms.add(transform) : transforms.push(transform);
 			}
 
@@ -52,7 +52,8 @@ Query.extend({
 });
 
 ['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 'drag',
- 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll', 
+ 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll',
+ 'ended', 'progress', 'loadeddata', 'loadedmetadata', 'canplay', 'start', 
  'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 
  'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'attr',
  'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'paddingTop', 
@@ -71,7 +72,7 @@ Query.extend({
 	})
 	.enhance(Query);
 
-['closest', 'find']
+['closest', 'find', 'next', 'prev', 'siblings']
 	.from({})
 	.map(function (value, key) {
 		return Query.transformer(key);

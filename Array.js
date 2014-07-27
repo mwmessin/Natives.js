@@ -31,8 +31,7 @@ Array.implement({
 	},
 
 	index: function (i) {
-		if (this.length) while (i < 0) i += this.length;
-		return this[i];
+		return this[i.mod(this.length)];
 	},
 
 	last: function () {
@@ -45,7 +44,7 @@ Array.implement({
 
 	remove: function (object) {
 		var index = this.indexOf(object);
-		if (index === -1) return;
+		if (index === -1) return this;
 		this.splice(index, 1);
 		return this;
 	},
