@@ -53,7 +53,7 @@ Query.extend({
 
 ['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove', 'drag',
  'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'scroll',
- 'ended', 'progress', 'loadeddata', 'loadedmetadata', 'canplay', 'start', 
+ 'ended', 'progress', 'loadeddata', 'loadedmetadata', 'canplay', 'start', 'load',
  'mouseup', 'mousedown', 'contextmenu', 'keyup', 'keydown', 'keypress', 'error',
  'width', 'height', 'position', 'top', 'right', 'bottom', 'left', 'attr',
  'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'paddingTop', 
