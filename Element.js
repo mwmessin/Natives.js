@@ -133,7 +133,7 @@ Element.extend({
 
 ['touchstart', 'touchend', 'touchstart', 'touchend', 'touchcancel', 'touchleave', 
  'touchmove', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 
- 'scroll', 'contextmenu', 'ended', 'progress', 'loadeddata', 
+ 'scroll', 'contextmenu', 'ended', 'progress', 'loadeddata', 'error',
  'loadedmetadata', 'canplay']
 	.from({})
 	.map(function (value, key) {
