@@ -1,3 +1,8 @@
+
+function load(key) {
+	return localStorage[key].toObject();
+}
+
 Object.implement({
 
 	isObject: true,
@@ -28,10 +33,6 @@ Object.implement({
 	save: function (key) {
 		localStorage[key] = this;
 		return this;
-	},
-
-	load: function (key) {
-		return localStorage[key].toObject();
 	},
 
 	erase: function (key) {
