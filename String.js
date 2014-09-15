@@ -52,7 +52,7 @@ String.implement({
 		];
 	},
 
-	structure: function (pairsDelimeter, pairDelimeter) {
+	parse: function (pairsDelimeter, pairDelimeter) {
 		// convert a key-value string into an object
 		var result = {};
 		var pairs = this.split(pairsDelimeter);

@@ -156,7 +156,7 @@ Object.implement({
 		return result;
 	},
 
-	destructure: function (pairsDelimeter, pairDelimeter) {
+	serialize: function (pairsDelimeter, pairDelimeter) {
 		// convert an object into a key-value string
 		var pairs = [];
 

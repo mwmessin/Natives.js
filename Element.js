@@ -320,7 +320,7 @@ Element.implement({
 	shadow: Element.style('box-shadow'.prefixStyle()),
 
 	transition: function (key, time) {
-		var transitions = this.style['transition'].structure(', ', ' ');
+		var transitions = this.style['transition'].parse(', ', ' ');
 
 		if (time == null) {
 			if (transitions[key] == null) return null;
@@ -328,7 +328,7 @@ Element.implement({
 		}
 
 		transitions[key] = time + 'ms';
-		this.style['transition'] = transitions.destructure(', ', ' ');
+		this.style['transition'] = transitions.serialize(', ', ' ');
 		return this;
 	},
 

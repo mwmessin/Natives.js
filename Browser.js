@@ -29,7 +29,7 @@ window.extend({
   query: location.toString().split('?')[1]
 });
 
-window.params = query ? query.structure('&', '=') : null;
+window.params = query ? query.parse('&', '=') : null;
 
 $('body').mousedown('left', function () {
   window.dragging = true
@@ -47,7 +47,7 @@ function xhr(options) {
   var xhr = new XMLHttpRequest();
   var url = options.to;
 
-  if (options.params) url += '?' + options.params.destructure('&', '=');
+  if (options.params) url += '?' + options.params.serialize('&', '=');
 
   options.success && xhr.addEventListener('load', function () {
     log(xhr.status, xhr);
