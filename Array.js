@@ -42,6 +42,10 @@ Array.implement({
 		return this.indexOf(object) !== -1;
 	},
 
+	empty: function () {
+		return this.length == 0;
+	},
+
 	remove: function (object) {
 		var index = this.indexOf(object);
 		if (index === -1) return this;

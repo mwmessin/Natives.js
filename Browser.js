@@ -106,3 +106,28 @@ function del(url, params, success, error) {
     error: error
   });
 }
+
+function concurrently() {
+  var graph = [];
+
+  for (var i = 0; i < arguments.length; i += 2) {
+    var callback = arguments[i + 1];
+
+    callback.dependencies = arguments[i];
+    graph.push(callback);
+  }
+
+  for (var i = 0; i < graph.length; ++i) {
+    
+  }
+}
+
+function a() {}
+function b() {}
+function c() {}
+
+concurrently(
+  [ ], a,
+  [a], b,
+  [b], c
+);
