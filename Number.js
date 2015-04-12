@@ -32,9 +32,32 @@ function fibonacci(n) {
 }
 
 function prime(n) {
-	if (n < 1) return;
-	if (n = 1) return 2;
-	// now what?
+	// sieve of eratosthenes
+  var composites = [], primes = [];
+
+  for (var q = 2; q < n; ++q) {
+    if (composites[q]) {
+      for (var i = 0, p; i < composites[q].length; ++i) {
+        p = composites[q][i];
+
+        if (composites[p + q]) {
+          composites[p + q].push(p);
+        } else {
+          composites[p + q] = [p];
+        }
+      }
+
+      delete composites[q];
+    } else {
+      primes.push(q);
+
+      if (q * q < n) {
+        composites[q * q] = [q];
+      }
+    }
+  }
+
+  return primes[n];
 }
 
 Number.implement({
