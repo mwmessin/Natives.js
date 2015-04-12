@@ -107,13 +107,13 @@ function del(url, params, success, error) {
   });
 }
 
-function concurrently() {
+function dependencies() {
   var graph = [];
 
   for (var i = 0; i < arguments.length; i += 2) {
     var callback = arguments[i + 1];
-
     callback.dependencies = arguments[i];
+    
     graph.push(callback);
   }
 
@@ -126,7 +126,7 @@ function a() {}
 function b() {}
 function c() {}
 
-concurrently(
+dependencies(
   [ ], a,
   [a], b,
   [b], c
