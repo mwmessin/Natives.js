@@ -64,6 +64,21 @@ Number.implement({
 
 	isNumber: true,
 
+	isPrime: function () {
+		var n = this.valueOf();
+
+		if (n <= 3) return n > 1;
+		if (n % 2 === 0 || n % 3 === 0) return false;
+
+		var sqrt = Math.floor(Math.sqrt(n));
+
+		for (var i = 5; i <= sqrt; i += 6) {
+			if (n % i == 0 || n % (i + 2) == 0) return false;
+		}
+
+		return true;
+	},
+
 	toClick: function () {
 		return ["left", "middle", "right"][this - 1];
 	},
@@ -104,6 +119,16 @@ Number.implement({
 
 	factorial: function () {
 		return this > 0 ? this * (this - 1).factorial() : 1;
+	},
+
+	factors: function () {
+		var factors = [], n = this.valueOf();
+
+		for (var i = 0; i <= n / 2; ++i) {
+			if (n % i == 0) factors.push(i);
+		}
+
+		return factors;
 	},
 
 	choose: function (k) {

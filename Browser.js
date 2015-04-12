@@ -113,7 +113,7 @@ function dependencies() {
   for (var i = 0; i < arguments.length; i += 2) {
     var callback = arguments[i + 1];
     callback.dependencies = arguments[i];
-    
+
     graph.push(callback);
   }
 

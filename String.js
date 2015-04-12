@@ -44,6 +44,30 @@ String.implement({
 		return result;
 	},
 
+	padLeft: function(length, ch) {
+		if (this.length < length) {
+			return ch.times(length - this.length) + this;
+		} else {
+			return this;
+		}
+	},
+
+	sum: function (bignum) {
+		var longest = this.length.max(bignum.length),
+				a = this.padLeft(longest, '0'),
+				b = bignum.padLeft(longest, '0'),
+				result = '',
+				carry = 0;
+
+		for (var i = longest - 1; i >= 0; --i) {
+			part = +a[i] + +b[i] + carry;
+			carry = part / 10 | 0;
+			result = (part % 10) + result;
+		}
+
+		return carry > 0 ? carry + result : result;
+	},
+
 	colorHexToDec: function () {
 		return [
 			this.substring(1,3).toInt(16), 
