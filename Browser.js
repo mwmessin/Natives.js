@@ -54,11 +54,11 @@ function xhr(options) {
   if (options.params) url += '?' + options.params.serialize('&', '=');
 
   xhr.addEventListener('load', function () {
-    promise.onThen(xhr.response);
+    promise.onThen && promise.onThen(xhr.response);
   }, false);
 
   xhr.addEventListener('error', function () {
-    promise.onError(xhr.response);
+    promise.onError && promise.onError(xhr.response);
   }, false);
 
   xhr.open(options.method || 'get', url, true);
@@ -102,4 +102,3 @@ function del(url, params) {
     params: params
   });
 }
-
