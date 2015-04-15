@@ -46,63 +46,60 @@ function script(src) {
 function xhr(options) {
   var xhr = new XMLHttpRequest();
   var url = options.to;
+  var promise = {
+    then: function (onThen) { this.onThen = onThen; return this; },
+    error: function (onError) { this.onError = onError; return this; }
+  };
 
   if (options.params) url += '?' + options.params.serialize('&', '=');
 
-  options.success && xhr.addEventListener('load', function () {
-    log(xhr.status, xhr);
-    options.success(xhr.response);
+  xhr.addEventListener('load', function () {
+    promise.onThen(xhr.response);
   }, false);
 
-  options.error && xhr.addEventListener('error', function () {
-    error(xhr.status, xhr);
-    options.error(xhr.response);
+  xhr.addEventListener('error', function () {
+    promise.onError(xhr.response);
   }, false);
 
   xhr.open(options.method || 'get', url, true);
   xhr.send();
+
+  return promise;
 }
 
-function get(url, params, success, error) {
+function get(url, params) {
   if (params.isFunction) error = success, success = params, params = null;
   return xhr({
     method: 'get',
     to: url,
-    params: params,
-    success: success,
-    error: error
+    params: params
   });
 }
 
-function post(url, params, success, error) {
+function post(url, params) {
   if (params.isFunction) error = success, success = params, params = null;
   return xhr({
     method: 'post',
     to: url,
-    params: params,
-    success: success,
-    error: error
+    params: params
   });
 }
 
-function put(url, params, success, error) {
+function put(url, params) {
   if (params.isFunction) error = success, success = params, params = null;
   return xhr({
     method: 'put',
     to: url,
-    params: params,
-    success: success,
-    error: error
+    params: params
   });
 }
 
-function del(url, params, success, error) {
+function del(url, params) {
   if (params.isFunction) error = success, success = params, params = null;
   return xhr({
     method: 'delete',
     to: url,
-    params: params,
-    success: success,
-    error: error
+    params: params
   });
 }
+
