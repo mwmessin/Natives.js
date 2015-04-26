@@ -5,6 +5,17 @@ Array.implement({
 
 	toString: JSON.stringify.methodize(JSON),
 
+	toObject: function (callback) {
+		var result = {};
+		callback = callback || function () {};
+
+		for (var i = 0, l = this.length; i < l; ++i) {
+			result[this[i]] = callback(this[i]);
+		}
+
+		return result;
+	},
+
 	toColorHex: function () {
 		var red = (this[0] * 255 | 0).toHex();
 		red = '0'.times(2 - red.length) + red;

@@ -135,40 +135,38 @@ Element.extend({
  'touchmove', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 
  'scroll', 'contextmenu', 'ended', 'progress', 'loadeddata', 'error', 'load',
  'loadedmetadata', 'canplay', 'dragenter', 'dragover', 'drop']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Element.event(key);
 	})
+	.enhance(Window)
 	.enhance(Element);
 
 ['mouseup', 'mousedown']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Element.detailedEvent(key, Element.mouseListener);
 	})
+	.enhance(Window)
 	.enhance(Element);
 
 ['keyup', 'keydown', 'keypress']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Element.detailedEvent(key, Element.keyListener);
 	})
+	.enhance(Window)
 	.enhance(Element);
 
 ['top', 'right', 'bottom', 'left', 'marginTop', 'marginRight', 'marginBottom',
  'marginLeft', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth',
  'borderLeftWidth', 'borderWidth', 'borderRadius', 'paddingTop', 'paddingRight',
  'paddingBottom', 'paddingLeft']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Element.pxStyle(key.toDashCase());
 	})
 	.enhance(Element);
 
 ['background', 'backgroundColor', 'display', 'visibility', 'borderTop', 'borderRight', 
  'borderBottom', 'borderLeft', 'position', 'float', 'cursor']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Element.style(key.toDashCase());
 	})
 	.enhance(Element);
@@ -221,7 +219,7 @@ Element.implement({
 		return children.index(children.indexOf(this) - 1);
 	},
 
-	closest: function (selector) {
+	closest: Element.prototype.closest || function (selector) {
 		var element = this;
 
 		while (element && element.matches && ! element.matches(selector)) {

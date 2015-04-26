@@ -1,4 +1,16 @@
 
+function log() {
+	console.log.apply(console, arguments);
+}
+
+function warn() {
+  console.warn.apply(console, arguments);
+}
+
+function error() {
+  console.error.apply(console, arguments);
+}
+
 Function.prototype.implement = function (members) {
 	var key, prototype = this.prototype;
 

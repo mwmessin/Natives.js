@@ -67,15 +67,13 @@ Query.extend({
  'prependTo', 'prepend', 'has', 'tag', 'matches', 'src', 'float', 'off',
  'visibility', 'layer', 'rotate', 'x', 'y', 'z', 'transform', 'transition', 
  'tooltip', 'shadow', 'context2d', 'context3d', 'display', 'cursor']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Query.invoker(key);
 	})
 	.enhance(Query);
 
 ['closest', 'find', 'next', 'prev', 'siblings']
-	.from({})
-	.map(function (value, key) {
+	.toObject(function (key) {
 		return Query.transformer(key);
 	})
 	.enhance(Query);

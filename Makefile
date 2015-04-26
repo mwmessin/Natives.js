@@ -1,5 +1,6 @@
 all:
-	cat Function.js \
+	cat \
+		Function.js \
 		Array.js \
 		Object.js \
 		Boolean.js \

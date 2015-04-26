@@ -1,16 +1,4 @@
 
-function log() {
-	console.log.apply(console, arguments);
-}
-
-function warn() {
-  console.warn.apply(console, arguments);
-}
-
-function error() {
-  console.error.apply(console, arguments);
-}
-
 function resize(handler) {
 	window.addEventListener('resize', handler);
 }
@@ -102,3 +90,39 @@ function del(url, params) {
     params: params
   });
 }
+
+function dependencies() {
+  var graph = [];
+
+  for (var i = 0; i < arguments.length; i += 2) {
+    var dependencies = arguments[i], callback = arguments[i + 1];
+    callback.dependencies = dependencies;
+
+    for (var j = 0; j < dependencies.length; ++j) {
+      var precursor = dependencies[j];
+      precursor.dependents || (precursor.dependents = []);
+      precursor.dependents.push(callback);
+    }
+
+    graph.push(callback);
+  }
+
+  for (var i = 0; i < graph.length; ++i) {
+    var callback = graph[i];
+    if (callback.dependencies.length == 0) {
+      callback.call({});
+
+    }
+  }
+}
+
+function a(cb) {}
+function b(cb) {}
+function c(cb) {}
+
+dependencies(
+  [ ], a,
+  [a], b,
+  [b], c
+);
+
