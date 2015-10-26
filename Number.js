@@ -21,9 +21,9 @@ function now() {
 	return +new Date;
 }
 
-function gcd(a, b) {
+function greatestCommonDenominator(a, b) {
 	if (! b) return a;
-	return gcd(b, a % b);
+	return greatestCommonDenominator(b, a % b);
 }
 
 function fibonacci(n) {
@@ -33,31 +33,31 @@ function fibonacci(n) {
 
 function prime(n) {
 	// sieve of eratosthenes
-  var composites = [], primes = [];
+	var composites = [], primes = [];
 
-  for (var q = 2; q < n; ++q) {
-    if (composites[q]) {
-      for (var i = 0, p; i < composites[q].length; ++i) {
-        p = composites[q][i];
+	for (var q = 2; q < n; ++q) {
+		if (composites[q]) {
+			for (var i = 0, p; i < composites[q].length; ++i) {
+				p = composites[q][i];
 
-        if (composites[p + q]) {
-          composites[p + q].push(p);
-        } else {
-          composites[p + q] = [p];
-        }
-      }
+				if (composites[p + q]) {
+					composites[p + q].push(p);
+				} else {
+					composites[p + q] = [p];
+				}
+			}
 
-      delete composites[q];
-    } else {
-      primes.push(q);
+			delete composites[q];
+		} else {
+			primes.push(q);
 
-      if (q * q < n) {
-        composites[q * q] = [q];
-      }
-    }
-  }
+			if (q * q < n) {
+				composites[q * q] = [q];
+			}
+		}
+	}
 
-  return primes[n];
+	return primes[n];
 }
 
 Number.implement({
@@ -70,9 +70,7 @@ Number.implement({
 		if (n <= 3) return n > 1;
 		if (n % 2 === 0 || n % 3 === 0) return false;
 
-		var sqrt = Math.floor(Math.sqrt(n));
-
-		for (var i = 5; i <= sqrt; i += 6) {
+		for (var i = 5, sqrtN = sqrt(n).floor(); i <= sqrtN; i += 6) {
 			if (n % i == 0 || n % (i + 2) == 0) return false;
 		}
 
